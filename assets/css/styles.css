@@ -72,7 +72,7 @@
     text-transform: uppercase;
     text-shadow: 0 1px 0 white; }
     .main-nav-list a:hover {
-      color: #d58e00; }
+      color: #bc7d00; }
   .main-nav-list .logo {
     float: left;
     padding: 0;
@@ -86,7 +86,7 @@
       .main-nav-list .logo a:hover {
         border-bottom: transparent; }
   .main-nav-list .main-nav-active a {
-    color: #d58e00; }
+    color: #bc7d00; }
   .main-nav-list .main-nav-active:after {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
