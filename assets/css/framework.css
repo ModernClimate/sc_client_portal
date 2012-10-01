@@ -116,12 +116,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 .aligncenter {
   text-align: center; }
 
-.cf, table, .nav, .sep {
+.cf, .nav, .sep {
   zoom: 1; }
-  .cf:before, table:before, .nav:before, .sep:before, .cf:after, table:after, .nav:after, .sep:after {
+  .cf:before, .nav:before, .sep:before, .cf:after, .nav:after, .sep:after {
     content: "";
     display: table; }
-  .cf:after, table:after, .nav:after, .sep:after {
+  .cf:after, .nav:after, .sep:after {
     clear: both; }
 
 .accessibility {
@@ -238,7 +238,7 @@ html, body {
   color: #636466;
   font-size: 16px;
   line-height: 24px;
-  font-family: "freight-sans-pro", serif;
+  font-family: "freight-sans-pro", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400; }
 
 /*============================================
@@ -354,12 +354,49 @@ thead {
   float: none !important; }
   thead td, thead th {
     border-bottom: solid 1px #d0d0d1;
-    color: #636466;
+    color: #231f20;
     display: table-cell;
     padding: 4px 8px;
     font-weight: 500;
     text-align: left;
     text-transform: uppercase; }
+  thead .sortable {
+    padding-right: 16px; }
+    thead .sortable a {
+      -moz-transition: none;
+      -ms-transition: none;
+      -webkit-transition: none;
+      transition: none;
+      color: #231f20;
+      display: inline-block;
+      padding-right: 14px;
+      position: relative; }
+      thead .sortable a:after, thead .sortable a:before {
+        color: #c1c1c2;
+        content: "▲";
+        display: block;
+        font-size: 8px;
+        position: absolute;
+        right: 0;
+        top: -4px; }
+      thead .sortable a:after {
+        content: "▼";
+        margin-top: 8px; }
+      thead .sortable a:hover, thead .sortable a:hover:before, thead .sortable a:hover:after {
+        border: transparent;
+        color: #0178be; }
+  thead .sorted-down a:before {
+    display: none; }
+  thead .sorted-down a:after {
+    color: #231f20;
+    font-size: 10px;
+    top: -7px; }
+  thead .sorted-up a:before {
+    color: #231f20;
+    font-size: 10px;
+    top: 0px; }
+  thead .sorted-up a:after {
+    display: none; }
 
 tbody {
   display: table-row-group !important;
@@ -460,21 +497,16 @@ tbody {
  * ========================================== */
 /*============================================
  * ^Nav - Abstractions
- * ==========================================*/
- *
- *
- * /*
- * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+ * ========================================== */
+/* Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
  * When used on an `ol` or `ul`, this class throws the list into horizontal mode
  * e.g.:
- *
- *   <ul class=nav>
- *       <li><a href=#>Home</a></li>
- *       <li><a href=#>About</a></li>
- *       <li><a href=#>Portfolio</a></li>
- *       <li><a href=#>Contact</a></li>
- *   </ul>
- *
+ * <ul class=nav>
+ *     <li><a href=#>Home</a></li>
+ *     <li><a href=#>About</a></li>
+ *     <li><a href=#>Portfolio</a></li>
+ *     <li><a href=#>Contact</a></li>
+ * </ul>
  */
 .nav {
   list-style: none;

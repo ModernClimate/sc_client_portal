@@ -150,10 +150,10 @@ $colspacing: 0.73%
 
 html,body
   background: $bodybg
-  color: $black
+  color: $grey100
   font-size: $base*2
   line-height: $base*3
-  font-family: "freight-sans-pro", serif
+  font-family: "freight-sans-pro", "Helvetica Neue", Arial, sans-serif
   font-weight: 400
 
 /*============================================
@@ -205,7 +205,7 @@ h1,
 
 h2,
 .second-heading
-  color: $black
+  color: $grey100
   font-size: $base*3
   margin: 0 0 $base*3 0
   padding-top: $base*2
@@ -260,7 +260,6 @@ ol li
  ^Tables
  * ==========================================*/
 table
-  @extend .cf
   border-collapse: collapse
   border-spacing: 0
   display: table
@@ -276,6 +275,47 @@ thead
     font-weight: 500
     text-align: left
     text-transform: uppercase
+  .sortable
+    padding-right: $base*2
+    a
+      @include transition (none)
+      color: $black
+      display: inline-block
+      padding-right: 14px
+      position: relative
+      &:after,
+      &:before
+        color: $grey40
+        content: "▲"
+        display: block
+        font-size: 8px
+        position: absolute
+        right: 0
+        top: -4px
+      &:after
+        content: "▼"
+        margin-top: 8px
+      &:hover,
+      &:hover:before,
+      &:hover:after
+        border: transparent
+        color: $blue
+  .sorted-down
+    a:before
+      display: none
+    a:after 
+      color: $black
+      font-size: 10px
+      top: -7px
+
+  .sorted-up
+    a:before
+      color: $black
+      font-size: 10px
+      top: 0px
+    a:after 
+      display: none
+
 tbody
   display: table-row-group !important
   float: none !important
@@ -287,7 +327,7 @@ tbody
   tr:hover
     td,th
       background: $grey5
-      color: $black
+      color: $grey100
       text-shadow: 0 1px 0 #fff
 
 .t5   
@@ -361,18 +401,16 @@ tbody
  * ==========================================*/
 
 
- /*
+/*
  * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
  * When used on an `ol` or `ul`, this class throws the list into horizontal mode
  * e.g.:
- *
-   <ul class=nav>
-       <li><a href=#>Home</a></li>
-       <li><a href=#>About</a></li>
-       <li><a href=#>Portfolio</a></li>
-       <li><a href=#>Contact</a></li>
-   </ul>
- *
+ * <ul class=nav>
+ *     <li><a href=#>Home</a></li>
+ *     <li><a href=#>About</a></li>
+ *     <li><a href=#>Portfolio</a></li>
+ *     <li><a href=#>Contact</a></li>
+ * </ul>
  */
 
 .nav
@@ -429,7 +467,7 @@ tbody
 
 .inset
   background: $bodybg
-  box-shadow: inset 0 1px 2px transparentize($black, .9), 0 1px 0 #fff
+  box-shadow: inset 0 1px 2px transparentize($grey100, .9), 0 1px 0 #fff
   border: solid 1px $grey20
 
 .inset-white
