@@ -1,0 +1,126 @@
+
+@mixin border-radius ($radius) 
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  -webkit-border-radius: $radius
+  border-radius: $radius
+
+@mixin background-size($str)
+  -moz-background-size: $str
+  -ms-background-size: $str
+  -webkit-background-size: $str
+  background-size: $str
+
+
+@mixin box-shadow($str: 0 1px 3px rgba(0,0,0,.10), $alwaysDisplay: false)
+  -moz-box-shadow: $str
+  -ms-box-shadow: $str
+  -webkit-box-shadow: $str
+  box-shadow: $str
+
+  @if $alwaysDisplay == false
+    .touch &
+      -moz-box-shadow: none
+      -ms-box-shadow: none
+      -webkit-box-shadow: none
+      box-shadow: none
+
+@mixin transition($str: all .15s)
+  -moz-transition: $str
+  -ms-transition: $str
+  -webkit-transition: $str
+  transition: $str
+
+@mixin transition-slow($str: all .4s, $alwaysDisplay: false)
+  -moz-transition: $str
+  -ms-transition: $str
+  -webkit-transition: $str
+  transition: $str
+  
+
+@mixin column($count, $spacing)
+  -moz-column-count: $count
+  -moz-column-gap: $spacing
+  -webkit-column-count: $count
+  -webkit-column-gap: $spacing
+  column-count: $count
+  column-gap: $spacing
+
+@mixin transform($str)
+  -moz-transform: $str
+  -ms-transform: $str
+  -webkit-transform: $str
+  transform: $str
+
+@mixin font-smoothing($str)
+  -moz-font-smoothing: $str
+  -ms-font-smoothing: $str
+  -webkit-font-smoothing: $str
+  font-smoothing: $str
+
+
+@mixin box-sizing($str)
+  -moz-box-sizing: $str
+  -ms-box-sizing: $str
+  -webkit-box-sizing: $str
+  box-sizing: $str
+
+@mixin backface-visibility($str)
+  -moz-backface-visibility: $str
+  -ms-backface-visibility: $str
+  -webkit-backface-visibility: $str
+  backface-visibility: $str
+
+@mixin gradient($color,$gradient)
+  background-color: $color
+  background-image: -moz-linear-gradient($gradient)
+  background-image: -ms-linear-gradient($gradient)
+  background-image: -webkit-linear-gradient($gradient)
+  background-image: linear-gradient($gradient)
+
+
+@mixin animation($name, $duration, $count, $timing: linear)
+  -moz-animation-name: $name
+  -moz-animation-duration: $duration
+  -moz-animation-iteration-count: $count
+  -moz-animation-timing-function: $timing
+  -webkit-animation-name: $name
+  -webkit-animation-duration: $duration
+  -webkit-animation-iteration-count: $count
+  -webkit-animation-timing-function: $timing
+
+
+@mixin user-select($user-select-val)
+  -webkit-touch-callout: $user-select-val
+  -webkit-user-select: $user-select-val
+  -khtml-user-select: $user-select-val
+  -moz-user-select: $user-select-val
+  -ms-user-select: $user-select-val
+  user-select: $user-select-val
+
+
+$base: 8px
+$bodybg: #F9F8F6
+
+
+$blue: #0178BE
+$darkblue: #18466B
+$red: #C8000E
+$darkred: #B41C14
+$yellow: #E59E01
+$darkyellow: #D58E00
+
+$grey5: #F7F7F7
+$grey10: #EFEFF0
+$grey15: #E8E8E8
+$grey20: #E0E0E0
+$grey30: #D0D0D1
+$grey40: #C1C1C2
+$grey50: #B1B2B3
+$grey60: #A2A3A4
+$grey70: #929395 
+$grey80: #828385
+$grey90: #bdbcbc
+$black: #636466
+
+$link: $blue

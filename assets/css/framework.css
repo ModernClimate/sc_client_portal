@@ -1,0 +1,555 @@
+/*Reset ===================================== */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, figure, figcaption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body, select, input, textarea {
+  color: #444444; }
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+.ie7 img {
+  -ms-interpolation-mode: bicubic; }
+
+* {
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+  display: block; }
+
+/*============================================
+ * Framework
+ * Project:  SullivanCotter Client Portal
+ * 
+ * Table of Contents
+ *  ^Readme
+ *  ^Helpers..................Arbitrary helper classes
+ *  ^Fonts....................Embedded typekit and weights
+ *  ^Main.....................High Level Elements (html/body)
+ *  ^Headings.................h1-h6 elements
+ *  ^Typography...............<p> elements and other minor type elements
+ *  ^Links....................Anchor links
+ *  ^Lists
+ *  ^Tables
+ *  ^Forms
+ *  ^Buttons
+ *  ^Icons
+ *  ^Nav - Abstraction
+ *  ^Island - Abstraction
+ *  ^Inset/Outset - Abstraction
+ *  ^Separator - Abstraction
+ * ============================================ */
+/*============================================
+ * ^Readme
+ * 
+ * This file is the base framework containing a number of objects and abstractions
+ * that form the basis for much of the app/site. CSS for new or un-anticipated site
+ * elements should go in styles.sass.
+ * ========================================== */
+/*============================================
+ * ^Fonts
+ *
+ * font-family: "freight-sans-pro"
+ *
+ * light
+ *   font-weight: 300
+ * book
+ *   font-weight: 400
+ * medium
+ *   font-weight: 500
+ * semibold
+ *   font-weight: 600
+ * italic
+ *   font-style: italic
+ *
+ * ========================================== */
+/*============================================
+ * ^Helper classes
+ * ========================================== */
+.fr {
+  float: right; }
+
+.fl {
+  float: left; }
+
+.alignright {
+  text-align: right; }
+
+.alignleft {
+  text-align: left; }
+
+.aligncenter {
+  text-align: center; }
+
+.cf, table, .nav, .sep {
+  zoom: 1; }
+  .cf:before, table:before, .nav:before, .sep:before, .cf:after, table:after, .nav:after, .sep:after {
+    content: "";
+    display: table; }
+  .cf:after, table:after, .nav:after, .sep:after {
+    clear: both; }
+
+.accessibility {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap; }
+
+/*============================================
+ * ^Grid
+ * ========================================== */
+.grid, .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12 {
+  float: left;
+  margin-left: 0.73%; }
+
+.container {
+  display: block;
+  margin: 0 auto;
+  width: 1012px; }
+
+.row {
+  margin-left: -0.73%; }
+  .row:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+
+.show-grid {
+  margin-bottom: 10px; }
+  .show-grid [class*="col"] {
+    color: white;
+    background: #a2a3a4;
+    padding: 3px;
+    text-align: center; }
+
+.col1 {
+  width: 7.6%; }
+
+.col2 {
+  width: 15.93%; }
+
+.col3 {
+  width: 24.26%; }
+
+.col4 {
+  width: 32.59%; }
+
+.col5 {
+  width: 40.92%; }
+
+.col6 {
+  width: 49.25%; }
+
+.col7 {
+  width: 57.58%; }
+
+.col8 {
+  width: 65.91%; }
+
+.col9 {
+  width: 74.24%; }
+
+.col10 {
+  width: 82.57%; }
+
+.col11 {
+  width: 90.9%; }
+
+.col12 {
+  width: 99.23%; }
+
+.offset1 {
+  margin-left: 9.06%; }
+
+.offset2 {
+  margin-left: 17.39%; }
+
+.offset3 {
+  margin-left: 25.72%; }
+
+.offset4 {
+  margin-left: 34.05%; }
+
+.offset5 {
+  margin-left: 42.38%; }
+
+.offset6 {
+  margin-left: 50.71%; }
+
+.offset7 {
+  margin-left: 59.04%; }
+
+.offset8 {
+  margin-left: 67.37%; }
+
+.offset9 {
+  margin-left: 75.7%; }
+
+.offset10 {
+  margin-left: 84.03%; }
+
+.offset11 {
+  margin-left: 92.36%; }
+
+.offset12 {
+  margin-left: 100.69%; }
+
+/*============================================
+ * ^Main
+ * ========================================== */
+html, body {
+  background: #f9f8f6;
+  color: #636466;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "freight-sans-pro", serif;
+  font-weight: 400; }
+
+/*============================================
+ * ^Headings
+ * ========================================== */
+/*============================================
+ * ^Typography
+ * ========================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  text-shadow: 0 1px 0 white; }
+
+h1,
+.page-title {
+  border-bottom: solid 1px #e0e0e0;
+  color: #18466b;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0 0 32px 0;
+  padding: 0 0 24px 0;
+  position: relative; }
+  h1:before, h1:after,
+  .page-title:before,
+  .page-title:after {
+    background: #e0e0e0;
+    bottom: -1px;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    width: 100%; }
+  h1:before,
+  .page-title:before {
+    left: -32px; }
+  h1:after,
+  .page-title:after {
+    left: auto;
+    right: -32px; }
+  h1.borderless,
+  .page-title.borderless {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 16px; }
+    h1.borderless:after, h1.borderless:before,
+    .page-title.borderless:after,
+    .page-title.borderless:before {
+      display: none; }
+
+h2,
+.second-heading {
+  color: #636466;
+  font-size: 24px;
+  margin: 0 0 24px 0;
+  padding-top: 16px; }
+
+h3,
+.third-heading {
+  color: #d58e00;
+  margin: 0 0 16px 0;
+  text-transform: uppercase; }
+
+p {
+  margin: 0 0 16px 0; }
+  p:last-child {
+    margin-bottom: 0; }
+
+/*============================================
+ * ^Links
+ * ========================================== */
+a {
+  -moz-transition: color 0.15s, border 0.15s, background 0.15s;
+  -ms-transition: color 0.15s, border 0.15s, background 0.15s;
+  -webkit-transition: color 0.15s, border 0.15s, background 0.15s;
+  transition: color 0.15s, border 0.15s, background 0.15s;
+  border-bottom: solid 1px transparent;
+  color: #0178be;
+  text-decoration: none;
+  position: relative; }
+  a:hover {
+    border-bottom: solid 1px; }
+  a:active, a:focus {
+    top: 1px; }
+
+/*============================================
+ * ^Lists
+ * ========================================== */
+ul, ol {
+  margin-bottom: 24px;
+  margin-left: 24px; }
+  ul li, ol li {
+    margin-bottom: 8px; }
+
+ul,
+ul li {
+  list-style: disc; }
+
+ol,
+ol li {
+  list-style: decimal; }
+
+/*============================================
+ * ^Tables
+ * ========================================== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+  width: 100%; }
+
+thead {
+  display: table-row-group !important;
+  float: none !important; }
+  thead td, thead th {
+    border-bottom: solid 1px #d0d0d1;
+    color: #636466;
+    display: table-cell;
+    padding: 4px 8px;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase; }
+
+tbody {
+  display: table-row-group !important;
+  float: none !important; }
+  tbody td, tbody th {
+    border-bottom: solid 1px #e8e8e8;
+    display: table-cell;
+    padding: 8px;
+    text-align: left; }
+  tbody tr:hover td, tbody tr:hover th {
+    background: #f7f7f7;
+    color: #636466;
+    text-shadow: 0 1px 0 white; }
+
+.t5 {
+  width: 5%; }
+
+.t10 {
+  width: 10%; }
+
+.t12 {
+  width: 12.5%; }
+
+.t15 {
+  width: 15%; }
+
+.t20 {
+  width: 20%; }
+
+.t25 {
+  width: 25%; }
+
+.t30 {
+  width: 30%; }
+
+.t33 {
+  width: 33.333%; }
+
+.t35 {
+  width: 35%; }
+
+.t37 {
+  width: 37.5%; }
+
+.t40 {
+  width: 40%; }
+
+.t45 {
+  width: 45%; }
+
+.t50 {
+  width: 50%; }
+
+.t55 {
+  width: 55%; }
+
+.t60 {
+  width: 60%; }
+
+.t62 {
+  width: 62.5%; }
+
+.t65 {
+  width: 65%; }
+
+.t66 {
+  width: 66.666%; }
+
+.t70 {
+  width: 70%; }
+
+.t75 {
+  width: 75%; }
+
+.t80 {
+  width: 80%; }
+
+.t85 {
+  width: 85%; }
+
+.t87 {
+  width: 87.5%; }
+
+.t90 {
+  width: 90%; }
+
+.t95 {
+  width: 95%; }
+
+/*============================================
+ * ^Forms
+ * ========================================== */
+/*============================================
+ * ^Buttons
+ * ========================================== */
+/*============================================
+ * ^Icons
+ * ========================================== */
+/*============================================
+ * ^Nav - Abstractions
+ * ==========================================*/
+ *
+ *
+ * /*
+ * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+ * When used on an `ol` or `ul`, this class throws the list into horizontal mode
+ * e.g.:
+ *
+ *   <ul class=nav>
+ *       <li><a href=#>Home</a></li>
+ *       <li><a href=#>About</a></li>
+ *       <li><a href=#>Portfolio</a></li>
+ *       <li><a href=#>Contact</a></li>
+ *   </ul>
+ *
+ */
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .nav > li,
+  .nav > li > a,
+  .nav > li > span {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    zoom: 1; }
+
+/*
+ * `.stacked` extends `.nav` and throws the list into vertical mode, e.g.: 
+ *
+ *   <ul class="nav stacked">
+ *       <li><a href=#>Home</a></li>
+ *       <li><a href=#>About</a></li>
+ *       <li><a href=#>Portfolio</a></li>
+ *       <li><a href=#>Contact</a></li>
+ *   </ul>
+ *
+ */
+.stacked > li {
+  display: list-item; }
+  .stacked > li > a,
+  .stacked > li > span {
+    display: block; }
+
+/*============================================
+ * ^Island - Abstractions
+ * ========================================== */
+.island {
+  margin-bottom: 16px;
+  padding: 32px; }
+  .island .island > :last-child {
+    margin-bottom: 0; }
+
+/*============================================
+ * ^Inset/Outset - Abstractions
+ * ========================================== */
+.inset {
+  background: #f9f8f6;
+  box-shadow: inset 0 1px 2px rgba(99, 100, 102, 0.1), 0 1px 0 white;
+  border: solid 1px #e0e0e0; }
+
+.inset-white {
+  background: white; }
+
+.outset {
+  background: white;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15); }
+  .no-boxshadow .outset {
+    border: solid 1px #e8e8e8; }
+
+/*============================================
+ * ^Separator - Abstractions
+ * ==========================================*/
+ *
+ * /*
+ * Seperators should be empty elements, creates a single line.
+ * Combine with the grid system to get the proper width
+ * e.g.:
+ *
+ *   <div class="sep"></div>
+ *
+ *   <span class="col12 sep"></span>
+ *
+ */
+.sep {
+  background: #e0e0e0;
+  box-shadow: 0 1px 0 white;
+  display: block;
+  font-size: 1px;
+  line-height: 1px;
+  height: 1px;
+  margin-bottom: 16px; }

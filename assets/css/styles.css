@@ -1,0 +1,152 @@
+/*============================================
+ * Main Stylesheet
+ * Project:  SullivanCotter Client Portal
+ * 
+ * Table of Contents
+ *  ^Page header
+ *  ^Main Nav
+ *  ^Sub Nav
+ *  ^Breadcrumbs
+ * ============================================ */
+/*============================================
+ * ^Page header
+ * ========================================== */
+.page-header {
+  background: url(../images/bg-noise-blue.png);
+  border-bottom: solid 1px #18466b;
+  box-shadow: 0 1px 0 white, inset 0 -1px 4px -1px rgba(0, 0, 0, 0.25);
+  height: 32px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+
+.utilities-nav {
+  font-size: 14px;
+  margin-left: auto;
+  overflow: hidden; }
+  .utilities-nav li {
+    margin-left: -3px; }
+  .utilities-nav li:last-child {
+    border-right: solid 1px #133856;
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); }
+  .utilities-nav a, .utilities-nav span {
+    color: #8ca3b5;
+    height: 32px;
+    line-height: 32px; }
+  .utilities-nav span {
+    padding: 0 16px; }
+  .utilities-nav a {
+    border-left: solid 1px #133856;
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.1);
+    color: #d1dae1;
+    padding: 0 24px; }
+    .utilities-nav a:hover {
+      background: #133856;
+      border-bottom: solid 1px transparent;
+      color: white; }
+    .utilities-nav a:active {
+      background: #11304a;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5); }
+
+/*============================================
+ * ^Main Nav
+ * ========================================== */
+.main-nav {
+  background: #ecebef;
+  border-bottom: solid 1px #e0e0e0;
+  box-shadow: inset 0 0px 3px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px; }
+
+.main-nav-list {
+  margin-left: auto;
+  padding: 48px 0 0 0; }
+  .main-nav-list li {
+    overflow: hidden;
+    padding: 16px 24px 16px 24px;
+    position: relative;
+    top: 1px; }
+  .main-nav-list a {
+    color: #828385;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 white; }
+    .main-nav-list a:hover {
+      color: #d58e00; }
+  .main-nav-list .logo {
+    float: left;
+    padding: 0;
+    width: 298px; }
+    .main-nav-list .logo a {
+      background: url(../images/bg-logo.png) 0 0 no-repeat;
+      display: block;
+      height: 44px;
+      float: left;
+      width: 298px; }
+      .main-nav-list .logo a:hover {
+        border-bottom: transparent; }
+  .main-nav-list .main-nav-active a {
+    color: #d58e00; }
+  .main-nav-list .main-nav-active:after {
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background: #f9f8f6;
+    border: solid 1px #e0e0e0;
+    bottom: -8px;
+    box-shadow: -1px -1px 3px -2px rgba(0, 0, 0, 0.1);
+    content: "";
+    display: block;
+    height: 14px;
+    left: 50%;
+    margin-left: -7px;
+    position: absolute;
+    width: 14px; }
+
+/*============================================
+ * ^Sub nav
+ * ========================================== */
+.subnav a {
+  border-bottom: none;
+  border-left: solid 4px white;
+  border-top: solid 1px #e0e0e0;
+  background: white;
+  font-size: 20px;
+  padding: 16px;
+  text-shadow: 0 1px 0 white; }
+.subnav a:hover,
+.subnav .subnav-active a {
+  border-bottom: none;
+  border-left: solid 4px #0178be;
+  background: #f7f7f7;
+  color: #636466; }
+.subnav .subnav-active a:active {
+  top: 0; }
+.subnav li:first-child a {
+  border-top: none; }
+
+/*============================================
+ * ^Breadcrumbs
+ * ========================================== */
+.breadcrumbs {
+  padding-bottom: 24px; }
+  .breadcrumbs li {
+    color: #e59e01;
+    font-size: 24px;
+    font-weight: 400;
+    text-shadow: 0 1px 0 white; }
+    .breadcrumbs li:after {
+      content: "/";
+      color: #b1b2b3;
+      font-size: 20px;
+      font-weight: 100;
+      display: inline-block;
+      margin: 0 8px;
+      position: relative;
+      top: -1px; }
+    .breadcrumbs li:last-child:after {
+      display: none; }
+  .breadcrumbs a {
+    color: #b1b2b3;
+    font-weight: 100; }
+    .breadcrumbs a:hover {
+      color: #e59e01; }

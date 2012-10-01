@@ -1,0 +1,175 @@
+@import mixins
+  
+/*============================================
+ * Main Stylesheet
+ * Project:  SullivanCotter Client Portal
+ * 
+ * Table of Contents
+ *  ^Page header
+ *  ^Main Nav
+ *  ^Sub Nav
+ *  ^Breadcrumbs
+ * ============================================*/
+
+
+/*============================================
+ ^Page header
+ * ==========================================*/
+
+.page-header
+  background: url(../images/bg-noise-blue.png)
+  border-bottom: solid 1px $darkblue
+  box-shadow: 0 1px 0 #fff, inset 0 -1px 4px -1px rgba(0,0,0,.25)
+  height: $base * 4
+  text-shadow: 0 1px 1px rgba(0,0,0,.5)
+
+.utilities-nav
+  font-size: $base * 2 * 0.875
+  margin-left: auto
+  overflow: hidden
+  li
+    margin-left: -3px
+  li:last-child
+    border-right: solid 1px darken($darkblue, 5%)
+    box-shadow: 1px 0 0 rgba(255,255,255,.1)
+  
+  a,span
+    color: #8CA3B5
+    height: $base * 4
+    line-height: $base * 4
+
+  span
+    padding: 0 $base * 2
+  
+  a
+    border-left: solid 1px darken($darkblue, 5%)
+    box-shadow: inset 1px 0 0 rgba(255,255,255,.1)
+    color: #D1DAE1
+    padding: 0 $base * 3
+    &:hover
+      background: darken($darkblue, 5%)
+      border-bottom: solid 1px transparent
+      color: #fff
+    &:active
+      background: darken($darkblue, 8%)
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.5)
+
+/*============================================
+ ^Main Nav
+ * ==========================================*/
+
+.main-nav
+  background: #ECEBEF
+  border-bottom: solid 1px $grey20
+  box-shadow: inset 0 0px 3px -1px rgba(0,0,0,.1)
+  margin-bottom: $base*5
+
+.main-nav-list
+  margin-left: auto
+  padding: $base*6 0 0 0
+
+  li
+    overflow: hidden
+    padding: $base*2 $base*3 $base*2 $base*3
+    position: relative
+    top: 1px
+  a
+    color: $grey80
+    font-weight: 500
+    line-height: 20px
+    text-transform: uppercase
+    text-shadow: 0 1px 0 #fff
+
+    &:hover
+      color: $darkyellow
+
+  .logo
+    float: left
+    padding: 0
+    width: 298px
+
+    a
+      background: url(../images/bg-logo.png) 0 0 no-repeat
+      display: block
+      height: 44px
+      float: left
+      width: 298px
+
+      &:hover
+        border-bottom: transparent
+  .main-nav-active
+
+    a
+      color: $darkyellow
+    &:after
+      @include transform (rotate(45deg))
+      background: $bodybg
+      border: solid 1px $grey20
+      bottom: -8px
+      box-shadow: -1px -1px 3px -2px rgba(0,0,0,.1)
+      content: ""
+      display: block
+      height: 14px
+      left: 50%
+      margin-left: -7px
+      position: absolute
+      width: 14px
+
+
+/*============================================
+ ^Sub nav
+ * ==========================================*/
+
+.subnav
+
+  a
+    border-bottom: none
+    border-left: solid $base/2 #fff
+    border-top: solid 1px $grey20
+    background: #fff
+    font-size: $base*2.5
+    padding: $base*2
+    text-shadow: 0 1px 0 #fff
+
+  a:hover,
+  .subnav-active a
+    border-bottom: none
+    border-left: solid $base/2 $blue
+    background: $grey5
+    color: $black
+  .subnav-active a:active
+    top: 0
+  li:first-child a
+    border-top: none
+
+
+/*============================================
+ ^Breadcrumbs
+ * ==========================================*/
+
+
+.breadcrumbs
+  padding-bottom: $base*3
+  li
+    color: $yellow
+    font-size: $base*3
+    font-weight: 400
+    text-shadow: 0 1px 0 #fff
+
+    &:after
+      content: "/"
+      color: $grey50
+      font-size: $base*2.5
+      font-weight: 100
+      display: inline-block
+      margin: 0 $base
+      position: relative
+      top: -1px
+    &:last-child:after
+      display: none
+  a
+    color: $grey50
+    font-weight: 100
+
+    &:hover
+      color: $yellow

@@ -1,0 +1,470 @@
+@import mixins
+@import reset
+
+  
+/*============================================
+ * Framework
+ * Project:  SullivanCotter Client Portal
+ * 
+ * Table of Contents
+ *  ^Readme
+ *  ^Helpers..................Arbitrary helper classes
+ *  ^Fonts....................Embedded typekit and weights
+ *  ^Main.....................High Level Elements (html/body)
+ *  ^Headings.................h1-h6 elements
+ *  ^Typography...............<p> elements and other minor type elements
+ *  ^Links....................Anchor links
+ *  ^Lists
+ *  ^Tables
+ *  ^Forms
+ *  ^Buttons
+ *  ^Icons
+ *  ^Nav - Abstraction
+ *  ^Island - Abstraction
+ *  ^Inset/Outset - Abstraction
+ *  ^Separator - Abstraction
+ * ============================================*/
+
+/*============================================
+ ^Readme
+ * 
+ * This file is the base framework containing a number of objects and abstractions
+ * that form the basis for much of the app/site. CSS for new or un-anticipated site
+ * elements should go in styles.sass.
+ * ==========================================*/
+
+
+/*============================================
+ ^Fonts
+ *
+ * font-family: "freight-sans-pro"
+ *
+ * light
+ *   font-weight: 300
+ * book
+ *   font-weight: 400
+ * medium
+ *   font-weight: 500
+ * semibold
+ *   font-weight: 600
+ * italic
+ *   font-style: italic
+ *
+ * ==========================================*/
+
+
+/*============================================
+ ^Helper classes
+ * ==========================================*/
+
+// Floats
+
+.fr
+  float: right
+
+.fl
+  float: left
+
+//Alignments
+
+.alignright
+  text-align: right
+
+.alignleft
+  text-align: left
+
+.aligncenter
+  text-align: center
+
+
+// Clearfix
+.cf
+  zoom: 1
+  &:before,
+  &:after
+    content: ""
+    display: table
+  
+  &:after
+    clear: both
+
+// Hides text in an element
+
+.accessibility
+  overflow: hidden
+  text-indent: 100%
+  white-space: nowrap
+
+
+
+/*============================================
+ ^Grid
+ * ==========================================*/
+
+$colwidth: 7.60%
+$colspacing: 0.73%
+
+.grid
+  float: left
+  margin-left: $colspacing
+
+.container
+  display: block
+  margin: 0 auto
+  width: 1012px
+
+.row
+  margin-left: - $colspacing
+  &:after
+    content: ""
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+.show-grid 
+  margin-bottom: 10px
+  & [class*="col"]
+    color: #fff
+    background: $grey60
+    padding: 3px
+    text-align: center
+
+// Generates columns
+
+@for $i from 1 through 12
+  $iminus: $i - 1
+  .col#{$i}
+    @extend .grid
+    width: $colwidth * $i + $colspacing*$iminus
+
+//  Generates offsets
+@for $i from 1 through 12
+  $iplus: $i + 1
+  .offset#{$i}
+    margin-left: $colwidth * $i + $colspacing*$iplus
+
+/*============================================
+ ^Main
+ * ==========================================*/
+
+html,body
+  background: $bodybg
+  color: $black
+  font-size: $base*2
+  line-height: $base*3
+  font-family: "freight-sans-pro", serif
+  font-weight: 400
+
+/*============================================
+ ^Headings
+ * ==========================================*/
+
+
+/*============================================
+ ^Typography
+ * ==========================================*/
+
+h1,h2,h3,h4,h5,h6
+  font-weight: 500
+  text-shadow: 0 1px 0 #fff
+
+h1,
+.page-title
+  border-bottom: solid 1px $grey20
+  color: $darkblue
+  font-size: $base*4
+  line-height: $base*5
+  margin: 0 0 $base*4 0
+  padding: 0 0 $base*3 0
+  position: relative
+
+  &:before,
+  &:after
+    background: $grey20
+    bottom: -1px
+    content: ""
+    display: block
+    height: 1px
+    position: absolute
+    left: 0
+    width: 100%
+  &:before
+    left: -32px
+  &:after
+    left: auto
+    right: -32px
+
+  &.borderless
+    border-bottom: none
+    padding-bottom: 0
+    margin-bottom: $base*2
+    &:after,&:before
+      display: none
+
+
+h2,
+.second-heading
+  color: $black
+  font-size: $base*3
+  margin: 0 0 $base*3 0
+  padding-top: $base*2
+
+h3,
+.third-heading
+  color: $darkyellow
+  margin: 0 0 $base*2 0
+  text-transform: uppercase
+
+p
+  margin: 0 0 $base*2 0
+
+  &:last-child
+    margin-bottom: 0
+
+/*============================================
+ ^Links
+ * ==========================================*/
+
+a
+  @include transition ((color .15s, border .15s, background .15s))
+  border-bottom: solid 1px transparent
+  color: $blue
+  text-decoration: none
+  position: relative
+
+  &:hover
+    border-bottom: solid 1px
+
+  &:active,
+  &:focus
+    top: 1px
+
+/*============================================
+ ^Lists
+ * ==========================================*/
+ul,ol
+  margin-bottom: $base*3
+  margin-left: $base*3
+  li
+    margin-bottom: $base
+
+ul,
+ul li
+  list-style: disc
+ol,
+ol li
+  list-style: decimal
+
+/*============================================
+ ^Tables
+ * ==========================================*/
+table
+  @extend .cf
+  border-collapse: collapse
+  border-spacing: 0
+  display: table
+  width: 100%
+thead
+  display: table-row-group !important
+  float: none !important
+  td,th
+    border-bottom: solid 1px $grey30
+    color: $black
+    display: table-cell
+    padding: $base/2 $base
+    font-weight: 500
+    text-align: left
+    text-transform: uppercase
+tbody
+  display: table-row-group !important
+  float: none !important
+  td,th
+    border-bottom: solid 1px $grey15
+    display: table-cell
+    padding: $base
+    text-align: left
+  tr:hover
+    td,th
+      background: $grey5
+      color: $black
+      text-shadow: 0 1px 0 #fff
+
+.t5   
+  width: 5% 
+.t10 
+  width: 10% 
+.t12 
+  width: 12.5%      /* 1/8 */
+.t15 
+  width: 15% 
+.t20 
+  width: 20% 
+.t25 
+  width: 25%        /* 1/4 */
+.t30 
+  width: 30% 
+.t33 
+  width: 33.333%    /* 1/3 */
+.t35 
+  width: 35% 
+.t37 
+  width: 37.5%      /* 3/8 */
+.t40 
+  width: 40% 
+.t45 
+  width: 45% 
+.t50 
+  width: 50%        /* 1/2 */
+.t55 
+  width: 55% 
+.t60 
+  width: 60% 
+.t62 
+  width: 62.5%      /* 5/8 */
+.t65 
+  width: 65% 
+.t66 
+  width: 66.666%    /* 2/3 */
+.t70 
+  width: 70% 
+.t75 
+  width: 75%        /* 3/4*/
+.t80 
+  width: 80% 
+.t85 
+  width: 85% 
+.t87 
+  width: 87.5%      /* 7/8 */
+.t90 
+  width: 90% 
+.t95 
+  width: 95% 
+
+/*============================================
+ ^Forms
+ * ==========================================*/
+
+
+/*============================================
+ ^Buttons
+ * ==========================================*/
+
+
+/*============================================
+ ^Icons
+ * ==========================================*/
+
+
+/*============================================
+ ^Nav - Abstractions
+ * ==========================================*/
+
+
+ /*
+ * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+ * When used on an `ol` or `ul`, this class throws the list into horizontal mode
+ * e.g.:
+ *
+   <ul class=nav>
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ */
+
+.nav
+  list-style: none
+  margin: 0
+  padding: 0
+  @extend .cf
+
+  > li,
+  > li > a,
+  > li > span
+    list-style: none
+    display: inline-block
+    margin: 0
+    zoom: 1
+      
+
+/**
+ * `.stacked` extends `.nav` and throws the list into vertical mode, e.g.: 
+ *
+   <ul class="nav stacked">
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ */
+
+.stacked 
+  > li
+    display: list-item
+    > a,
+    > span
+      display: block
+  
+
+/*============================================
+ ^Island - Abstractions
+ * ==========================================*/
+
+
+.island
+  margin-bottom: $base*2
+  padding: $base*4
+
+  .island > :last-child
+    margin-bottom: 0
+ 
+
+/*============================================
+ ^Inset/Outset - Abstractions
+ * ==========================================*/
+
+.inset
+  background: $bodybg
+  box-shadow: inset 0 1px 2px transparentize($black, .9), 0 1px 0 #fff
+  border: solid 1px $grey20
+
+.inset-white
+  background: #fff
+
+.outset
+  background: #fff
+  box-shadow: 0 1px 2px 1px rgba(0,0,0,.15)
+
+  .no-boxshadow & 
+    border: solid 1px $grey15
+
+/*============================================
+ ^Separator - Abstractions
+ * ==========================================*/
+
+ /*
+ * Seperators should be empty elements, creates a single line.
+ * Combine with the grid system to get the proper width
+ * e.g.:
+ *
+   <div class="sep"></div>
+
+   <span class="col12 sep"></span>
+ *
+ */
+
+.sep
+  @extend .cf
+  background: $grey20
+  box-shadow: 0 1px 0 #fff
+  display: block
+  font-size: 1px
+  line-height: 1px
+  height: 1px
+  margin-bottom: $base*2
+
+

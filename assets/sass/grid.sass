@@ -1,0 +1,123 @@
+@import mixins
+
+/*Variable definitions =====================================*/
+
+$colwidth: 7.60%
+$colspacing: 0.73%
+
+
+.grid
+  float: left
+  margin-left: $colspacing
+
+/*Desktop Grid =====================================*/
+
+.container
+  display: block
+  margin: 0 auto
+  width: 1012px
+
+.row
+  margin-left: - $colspacing
+  &:after
+    content: ""
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+.show-grid 
+  margin-bottom: 10px
+  & [class*="col"]
+    color: #fff
+    background: $grey60
+    padding: 3px
+    text-align: center
+
+.col1,
+.col2,
+.col3,
+.col4,
+.col5,
+.col6,
+.col7,
+.col8,
+.col9,
+.col10,
+.col11,
+.col12
+  @extend .grid
+
+.col1
+  width: $colwidth
+
+.col2
+  width: $colwidth*2+$colspacing
+
+.col3
+  width: $colwidth*3+$colspacing*2
+
+.col4
+  width: $colwidth*4+$colspacing*3
+
+.col5
+  width: $colwidth*5+$colspacing*4
+
+.col6
+  width: $colwidth*6+$colspacing*5
+
+.col7
+  width: $colwidth*7+$colspacing*6
+
+.col8
+  width: $colwidth*8+$colspacing*7
+
+.col9
+  width: $colwidth*9+$colspacing*8
+
+.col10
+  width: $colwidth*10+$colspacing*9
+
+.col11
+  width: $colwidth*11+$colspacing*10
+
+.col12
+  width: $colwidth*12+$colspacing*11
+
+
+
+.col_fourths
+  float: left
+  width: 25%
+
+.col_thirds
+  float: left
+  width: 33.3333333%
+
+/*Offsets =====================================*/
+
+.offset1,
+.offset2,
+.offset3,
+.offset4,
+.offset5,
+.offset6,
+.offset7
+  @extend .offset
+
+.offset1
+  margin-left: $colwidth + $colspacing*2
+.offset2
+  margin-left: $colwidth*2 + $colspacing*3
+.offset3
+  margin-left: $colwidth*3 + $colspacing*4
+.offset4
+  margin-left: $colwidth*4 + $colspacing*5
+.offset5
+  margin-left: $colwidth*5 + $colspacing*6
+.offset6
+  margin-left: $colwidth*6 + $colspacing*7
+.offset7
+  margin-left: $colwidth*7 + $colspacing*8
+
+
