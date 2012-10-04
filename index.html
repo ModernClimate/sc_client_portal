@@ -28,30 +28,36 @@
   </head>
   <body>
     <header class="page-header">
-      <ul class="container nav utilities-nav">
-        <li>
-          <span>cmicek@gmail.com</span><span>Allina Health System</span>
-        </li>
-        <li><a href="">Your account</a></li>
-        <li><a href="">Help</a></li>
-        <li><a href="">Logout</a></li>
-      </ul>
+      <div class="container">
+        <ul class="nav utilities-nav">
+          <li>
+            <span>cmicek@gmail.com</span><span>Allina Health System</span>
+          </li>
+          <li><a href="">Your account</a></li>
+          <li><a href="">Help</a></li>
+          <li><a href="">Logout</a></li>
+        </ul>
+      </div>
     </header>
     <nav class="main-nav">
-      <ul class="container nav main-nav-list">
-        <li class="logo accessibility"><a href="#">SullivanCotter Client Portal</a></li>
-        <li><a href="#">Surveys</a></li>
-        <li><a href="#">Organization</a></li>
-        <li class="main-nav-active"><a href="#">Users</a></li>
-        <li><a href="#">Tools</a></li>
-      </ul>
+      <div class="container">
+        <div class="logo accessibility"><a href="#">SullivanCotter Client Portal</a></div>
+        <ul class="nav main-nav-list">
+          <li class="first"><a href="#">Surveys</a></li>
+          <li><a href="#">Organization</a></li>
+          <li class="main-nav-active"><a href="#">Users</a></li>
+          <li><a href="#">Tools</a></li>
+        </ul>
+      </div>
     </nav>
     <!-- Container Start -->
-    <ol class="container nav breadcrumbs">
-      <li><a href="#">Oldest crumb</a></li>
-      <li><a href="">Older crumb</a></li>
-      <li>Current page</li>
-    </ol>
+    <div class="container">
+      <ol class="nav with-separator breadcrumbs">
+        <li><a href="#">Oldest crumb</a></li>
+        <li><a href="">Older crumb</a></li>
+        <li>Current page</li>
+      </ol>
+    </div>
     <!-- Container End -->
     <!-- Container Start -->
     <div class="container">
@@ -70,41 +76,240 @@
           <div class="island outset">
             <h1>Form Elements</h1>
             <p>All form inputs <strong>MUST</strong> encased in with <code>class="control-group></code> element(s).</p>
-            <p class="control-group">
-              <label for="">Basic Input</label>
-              <input type="text" placeholder="Type something...">
-            </p>
+            <fieldset>
+              <div class="control-group">
+                <label for="">Basic Input</label>
+                <input type="text" placeholder="Type something...">
+              </div>
+               <div class="control-group full-width">
+                <label for="">Full width input and label text. Full width input and label text. Full width input and label text.</label>
+                <input type="text" placeholder="Type something...">
+              </div>
+              <div class="control-group">
+                <label for="">Basic Select</label>
+                <select name="" id="">
+                  <option value="">yes</option>
+                  <option value="">no</option>
+                  <option value="">other</option>
+                </select>
+                <div class="control-group">
+                  <label for="">Dependent fields get indented.</label>
+                  <input type="text" placeholder="If other, describe..." />
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="control-group">
+                <p class="label">Pick item(s)</p>
+                <ul class="checklist">
+                  <li><label for="two"><input id="two" name="two" type="checkbox" />Two</label></li>
+                  <li><label for="three"><input id="three" name="three" type="checkbox" />Three</label></li>
+                  <li>
+                    <label for="other">
+                      <input class="vertically-centered"  type="checkbox" />
+                      <input class="mid" type="text" id="other" name="other" placeholder="Specify other...">
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="control-group">
+                <p class="label">Pick an item</p>
+                <ul class="checklist">
+                  <li>
+                      <label for="four">
+                        <input name="radios" id="four" type="radio" />four
+                      </label>
+                  </li>
+                  <li>
+                    <label for="five">
+                      <input name="radios" id="five" type="radio" />
+                      Quaescitium ut el escia venda pa dusant, ut lant pligendi bercia cum eariam renimossim et aut ipiderepudam aut faccum qui repudantur
+                    </label>
+                  </li>
+                  <li>
+                    <label for="six">
+                      <input name="radios" id="six" type="radio" />
+                      six
+                    </label>
+                  </li>
+                  <li>
+                    <label for="other-radio">
+                      <input class="vertically-centered" id="" name="radios" type="radio" />
+                      <input class="mid" type="text" placeholder="Specify other...">
+                    </label>
+                  </li>
+                </ul>
+              </div>
+          </fieldset>
+          <fieldset>
             <div class="control-group">
-              <label for="">Basic Select</label>
-              <select name="" id="">
-                <option value="">yes</option>
-                <option value="">no</option>
-                <option value="">other</option>
+              <label for="">Date selector</label>
+              <select name="" id="" class="skinny inline">
+                <option value="">Day</option>
+              </select>
+              <select name="" id="" class="skinny inline">
+                <option value="">Month</option>
+              </select>
+              <select name="" id="" class="skinny inline">
+                <option value="">Year</option>
               </select>
               <div class="control-group">
-                <label for="">If other, specify...</label>
-                <input type="text" placeholder="type something" />
+                <label for="">Dates can be indented as well</label>
+                <select name="" id="" class="skinny inline">
+                  <option value="">Day</option>
+                </select>
+                <select name="" id="" class="skinny inline">
+                  <option value="">Month</option>
+                </select>
+                <select name="" id="" class="skinny inline">
+                  <option value="">Year</option>
+                </select>
               </div>
             </div>
-            <div class="control-group">
-            <p class="label">Pick item(s)</p>
-            <ul class="checklist">
-              <li><label for="one">One</label><input id="one" type="checkbox"></li>
-              <li><label for="two">Two</label><input id="two" type="checkbox"></li>
-              <li><label for="three">Three</label><input id="three" type="checkbox"></li>
-            </ul>
+          </fieldset>
+          <fieldset>
+            <div class="control-group control-group-horizontal">
+              <label for="">Inputs can be inline</label>  
+              <input type="text" />
             </div>
-            <div class="control-group">
-            <p class="label">Pick an item</p>
-            <ul class="checklist">
-              <li><label for="four">four</label><input name="radios" id="four" type="radio"></li>
-              <li><label for="five">five</label><input name="radios" id="five" type="radio"></li>
-              <li><label for="six">six</label><input name="radios" id="six" type="radio"></li>
-            </ul>
-            </div>
+            <div class="control-group control-group-horizontal">
+              <label for="">Selects can be inline</label>  
+              <select name="" id="">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
 
+              <div class="control-group control-group-horizontal">
+                <label for="">Indented inlines</label>  
+                <input type="text" />
+              </div>
+
+              <div class="control-group control-group-horizontal">
+                <label for="">Indented inlines</label>  
+                <input type="text" />
+              </div>
+
+            </div>
+            <div class="control-group control-group-horizontal">
+              <label for="">Inputs can be inline with some long ass label names so we can see how it looks.</label>  
+              <input type="text" />
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="control-group">
+              <label for="">Textarea</label>
+              <textarea placeholder="Text input"></textarea>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="control-group control-group-error">
+              <label for="">Basic Input with Error! <span class="additional danger">This is the error message</span></label>
+              <input type="text" placeholder="Type something...">
+            </div>
+            <div class="control-group full-width control-group-error">
+              <label for="">Full width input with Error <span class="additional danger">This is the error message</span></label>
+              <input type="text" placeholder="Type something...">
+            </div>
+           
+            <div class="control-group control-group-horizontal control-group-error">
+              <label for="">Inline error messages <span class="additional danger">This is the error message</span></label>  
+              <input type="text" />
+            </div>
+       
+
+            
+          </fieldset>
+          <fieldset>
+            <div class="control-group full-width">
+              <p class="label full-width">Table-based inputs will be displayed along a flexible, full-width grid using &lt;table&gt; and &lt;td&gt; elements</p>
+              <table class="form-table">
+                <thead>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>MDs Hired within 1 Year</th>
+                    <th>PC MDs (exper.)</th>
+                    <th>Specialty MDs (exper.)</th>
+                    <th>RAP Physicians</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Administrative Stipends</td>
+                    <td class="t19"><input type="text"></td>
+                    <td class="t19"><input type="text"></td>
+                    <td class="t19"><input type="text"></td>
+                    <td class="t19"><select name="" id="">
+                      <option value=""></option>
+                    </select></td>
+                  </tr>
+                  <tr>
+                    <td>Call page</td>  
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><select name="" id="">
+                      <option value=""></option>
+                    </select></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" placeholder="Other"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><select name="" id="">
+                      <option value=""></option>
+                    </select></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </fieldset>
+          <div class="submit-group">
+            <a href="" class="btn btn-grey fl">Go back</a>  
+            <div class="dropdown fr">
+              <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">save section and...</a>
+               <ul class="nav stacked dropdown-menu">
+                <li><a href="">Come back later</a></li>
+                <li><a href="">Mark as complete</a></li>
+                <li class="sep"></li>
+                <li><a class="disabled" href="">Submit Survey</a></li>
+              </ul>
+            </div>
+          </div>
           </div>
           <!-- island End -->
+          <div class="island">
+            <ul class="nav tab-nav">
+              <li class="active"><a href="#tab-one" data-toggle="tab">Tab One</a></li>
+              <li><a href="#tab-two" data-toggle="tab">Tab Two</a></li>
+              <li><a href="#tab-three" data-toggle="tab">Tab Three</a></li>
+              <li class="fr"><a href="#tab-four" data-toggle="tab">Tab Four</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab island-small active" id="tab-one">Tab one content</div>
+              <div class="tab island-small" id="tab-two">Tab two content</div>
+              <div class="tab island-small" id="tab-three">Tab three content</div>
+              <div class="tab island-small" id="tab-four">Tab four content</div>
+            </div>
+            <ul class="nav with-separator">
+              <li><a href="#" class="">Regular Inline Link</a></li>
+              <li><a href="#" class="unimportant">Unimportant Inline Link</a></li>
+              <li><a href="#" class="danger">Dangerous Inline Link</a></li>
+            </ul>
+            <div class="sep"></div>
+            <p><a href="#collapse-one" class="collapse-link collapsed" data-toggle="collapse">This is an inline show/hide toggle (hiding)</a></p>
+            <p id="collapse-one" class="collapse">Toggeld Content. Ma apiditist et molum quasitas nonse praRorro to minis quatio quiam et voluptior solupta turendio. Et que conectur sit, alis vit vel eossequi apel ex et utemped magnimus.</p>
+
+            <p><a href="#collapse-two" class="collapse-link" data-toggle="collapse">This is an inline show/hide toggle (showing)</a></p>
+            <p id="collapse-two" class="collapse in">Toggeld Content. Ma apiditist et molum quasitas nonse praRorro to minis quatio quiam et voluptior solupta turendio. Et que conectur sit, alis vit vel eossequi apel ex et utemped magnimus.</p>
+            <div class="sep"></div>
+            <i class="icon icon-ok"></i>
+            <i class="icon icon-warning"></i>
+            <i class="icon icon-error"></i>
+            <i class="icon icon-empty"></i>
+            <i class="icon icon-close"></i>
+          </div>
           <!-- island start -->
           <div class="island outset">
             <h1>Header one</h1>
@@ -154,13 +359,27 @@
               <a href="" class="btn btn-yellow btn-small">Far Right</a>
             </p>
             <p>
-              <a href="" class="btn btn-blue btn-dropdown">Blue Dropdown</a>
+            <div class="dropdown">
+              <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Blue Dropdown</a>
+               <ul class="nav stacked dropdown-menu">
+                <li><a href="">one</a></li>
+                <li><a href="">two</a></li>
+                <li class="sep"></li>
+                <li><a class="disabled" href="">three</a></li>
+              </ul>
+            </div>
               <a href="" class="btn btn-link danger">Danger will robinson!</a>
             </p>
+            <h3>Other button uses</h3>
+            <div class="search">
+              <input type="text" placeholder="Search..." />
+                <a href="" class="btn btn-yellow btn-small btn-search"></a>
+            </div>
           </div>
           <!-- island End -->
           <!-- island start -->
           <div class="island outset">
+            <h1 class="page-title">Tables &amp pagination</h1>
             <table cellspacing="0" cellpadding="0">
               <thead>
                 <tr>
@@ -172,37 +391,43 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Table data</td>
-                  <td>Table data</td>
-                  <td>Table data</td>
-                  <td>Table data</td>
-                </tr>
-                <tr>
-                  <td>Table data</td>
+                  <td><a href="#">Table data</a></td>
                   <td>Table data</td>
                   <td>Table data</td>
                   <td>Table data</td>
                 </tr>
                 <tr>
-                  <td>Table data</td>
-                  <td>Table data</td>
-                  <td>Table data</td>
-                  <td>Table data</td>
-                </tr>
-                <tr>
-                  <td>Table data</td>
+                  <td><a href="#">Table data</a></td>
                   <td>Table data</td>
                   <td>Table data</td>
                   <td>Table data</td>
                 </tr>
                 <tr>
+                  <td><a href="#">Table data</a></td>
                   <td>Table data</td>
+                  <td>Table data</td>
+                  <td>Table data</td>
+                </tr>
+                <tr>
+                  <td><a href="#">Table data</a></td>
+                  <td>Table data</td>
+                  <td>Table data</td>
+                  <td>Table data</td>
+                </tr>
+                <tr>
+                  <td><a href="#">Table data</a></td>
                   <td>Table data</td>
                   <td>Table data</td>
                   <td>Table data</td>
                 </tr>
               </tbody>
             </table>
+            <div class="pagination">
+             <a href="#" class="btn btn-grey btn-disabled btn-small">&lsaquo; Prev</a>
+                           Page <input type="text"> of 5
+                           <a href="#" class="btn btn-grey btn-small">Next &rsaquo;</a>
+              <small>(Showing 4 of 25)</small>
+            </div>
            </div>
           <!-- island End -->
         </div>
@@ -211,23 +436,108 @@
       <!-- Row End -->
       <!-- Row Start -->
       <div class="row">
-        <div class="col12 island island-small alert alert-info">This is an info alert!
-          <a href="" class="close">&times;</a>
+        <div id="alert1" class="col12 island island-small alert info collapse in">This is an info alert!
+          <a href="#alert1" class="close" data-toggle="collapse">&times;</a>
         </div>
-        <div class="col12 island island-small alert alert-warning">
-          This is an info alert!
-          <a href="" class="close">&times;</a>
+        <div id="alert2" class="col12 island island-small alert warning collapse in">
+          This is an warning alert!
+          <a href="#alert2" class="close" data-toggle="collapse">&times;</a>
         </div>
-        <div class="col12 island island-small alert alert-error">
-          This is an info alert!
-          <a href="" class="close">&times;</a>
+        <div id="alert3" class="col12 island island-small alert error collapse in">
+          This is an error alert!
+          <a href="#alert3" class="close" data-toggle="collapse">&times;</a>
         </div>
       </div>
       <!-- Row End -->
+      <!-- Row Start -->
+      <div class="row">
+        <div class="col9 offset3 island outset">
+          <h1 class="page-title">Displaying tabular data</h1>
+          <div class="key-value-display">
+            <dl class="key-value-display-title">
+              <dt class="h3">Classifications</dt>
+              <dd></dd>
+            </dl>
+            <dl><dt>Sponsorship or ownership</dt>
+            <dd>Government, non-federal (state, county, city, or hospital district/authority)</dd></dl>
+            <dl><dt>Tax Classification</dt>
+            <dd>For-profit</dd></dl>
+            <dl><dt>Classification that best describes the organization type:</dt>
+            <dd>Hospital System</dd></dl>
+            <dl><dt>All classifications that describe your organization.</dt>
+            <dd>
+              <ul>
+                <li>Academic Medical Center</li>
+                <li>Hospital/medical center</li>
+                <li>Hospital-owned group practice</li>
+                <li>Other: Also a cat hospital</li>
+              </ul>
+            </dd></dl>
+          </div>
+          <div class="key-value-display">
+              <dl class="key-value-display-title">
+                  <dt class="h3">Trauma center status</dt>
+                  <dd></dd>
+              </dl>
+              <dl><dt>Number of employed physicians</dt><dd>Did not answer</dd></dl>
+              <dl><dt>Number of affiliated physicians</dt><dd>Did not answer</dd></dl>
+              <dl><dt>Number of hospital admissions</dt><dd>Did not answer</dd></dl>
+              <dl><dt>Number of outpatient care visits</dt><dd>Did not answer</dd></dl>
+              <dl><dt>Number of emergency room visits</dt><dd>Did not answer</dd></dl>
+              <dl><dt>Number of trauma center visits</dt><dd>Did not answer</dd></dl>
+              <dl><dt>Beds Operated</dt><dd>1,500</dd></dl>
+              <dl><dt>Beds Licensed</dt><dd>0</dd></dl>
+
+          </div>
+        </div>
+        <!-- Row End -->
+        <!-- Row Start -->
+        <div class="row">
+          <h1 class="island">Grid System</h1>
+          <div class="col1 outset island">1</div>
+          <div class="col2 outset island">2</div>
+          <div class="col3 outset island">3</div>
+          <div class="col6 outset island">6</div>
+        </div>
+        <!-- Row End -->
+        <!-- Row Start -->
+        <div class="row">
+          <div class="col2 offset1 outset island">2, offset 1</div>
+          <div class="col4 offset5 outset island">4, offset 5</div>
+        </div>
+        <!-- Row End -->
+        <!-- Row Start -->
+        <div class="row">
+          <div class="col9 offset3 outset island">9, offset 3</div>
+        </div>
+        <!-- Row End -->
+
+        <!-- Row Start -->
+        <div class="row">
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+          <div class="col1 outset island">1</div>
+        </div>
+        <!-- Row End -->
+
+       
+      </div>
     </div>
     <!-- Container End -->
     
  	<!-- Javascript Calls -->
- 	<script src="assets/js/script-ck.js"></script>
+ 	<script src="assets/js/jquery.js"></script>
+  <script src="assets/js/bootstrap-dropdown.js"></script>
+  <script src="assets/js/bootstrap-tabs.js"></script>
+  <script src="assets/js/bootstrap-collapse.js"></script>
  </body>
 </html>

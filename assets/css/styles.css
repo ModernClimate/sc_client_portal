@@ -38,7 +38,7 @@
     border-left: solid 1px #133856;
     box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.1);
     color: #d1dae1;
-    padding: 0 24px; }
+    padding: 0 16px; }
     .utilities-nav a:hover {
       background: #133856;
       border-bottom: solid 1px transparent;
@@ -54,17 +54,45 @@
   background: #ecebef;
   border-bottom: solid 1px #e0e0e0;
   box-shadow: inset 0 0px 3px -1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px; }
+  float: left;
+  margin-bottom: 40px;
+  padding: 40px 0 0 0;
+  width: 100%; }
+
+.logo {
+  float: left;
+  padding: 0;
+  width: 298px; }
+  .logo a {
+    background: url(../images/bg-logo.png) 0 0 no-repeat;
+    display: block;
+    color: #ecebef;
+    height: 44px;
+    float: left;
+    width: 298px; }
+    .logo a:hover {
+      border-bottom: transparent; }
+  @media screen and (max-width: 900px) {
+    .logo {
+      display: inline-block;
+      margin-right: auto;
+      width: 100%; } }
 
 .main-nav-list {
+  float: right;
   margin: 0 auto;
-  padding: 48px 0 0 0;
   text-align: right; }
+  @media screen and (max-width: 900px) {
+    .main-nav-list {
+      float: left; } }
   .main-nav-list li {
+    float: left;
     overflow: hidden;
     padding: 16px 24px 16px 24px;
     position: relative;
     top: 1px; }
+    .main-nav-list li.first {
+      padding-left: 0; }
   .main-nav-list a {
     color: #828385;
     font-weight: 500;
@@ -73,28 +101,16 @@
     text-shadow: 0 1px 0 white; }
     .main-nav-list a:hover {
       color: #bc7d00; }
-  .main-nav-list .logo {
-    float: left;
-    padding: 0;
-    width: 298px; }
-    .main-nav-list .logo a {
-      background: url(../images/bg-logo.png) 0 0 no-repeat;
-      display: block;
-      height: 44px;
-      float: left;
-      width: 298px; }
-      .main-nav-list .logo a:hover {
-        border-bottom: transparent; }
   .main-nav-list .main-nav-active a {
     color: #bc7d00; }
-  .main-nav-list .main-nav-active:after {
+  .main-nav-list .main-nav-active a:after {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     background: #f9f8f6;
     border: solid 1px #e0e0e0;
-    bottom: -8px;
+    bottom: -26px;
     box-shadow: -1px -1px 3px -2px rgba(0, 0, 0, 0.1);
     content: "";
     display: block;
@@ -103,6 +119,10 @@
     margin-left: -7px;
     position: absolute;
     width: 14px; }
+  .no-csstransforms .main-nav-list .main-nav-active a {
+    text-decoration: underline !important; }
+    .no-csstransforms .main-nav-list .main-nav-active a:after {
+      display: none; }
 
 /*============================================
  * ^Sub nav
@@ -130,24 +150,14 @@
  * ^Breadcrumbs
  * ========================================== */
 .breadcrumbs {
-  margin: 0 auto;
-  padding-bottom: 24px; }
+  padding: 0 0 24px; }
   .breadcrumbs li {
     color: #e59e01;
     font-size: 24px;
     font-weight: 400;
     text-shadow: 0 1px 0 white; }
     .breadcrumbs li:after {
-      content: "/";
-      color: #b1b2b3;
-      font-size: 20px;
-      font-weight: 100;
-      display: inline-block;
-      margin: 0 8px;
-      position: relative;
-      top: -1px; }
-    .breadcrumbs li:last-child:after {
-      display: none; }
+      content: "/"; }
   .breadcrumbs a {
     color: #b1b2b3;
     font-weight: 100; }

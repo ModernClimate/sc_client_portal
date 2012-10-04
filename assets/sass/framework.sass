@@ -6,7 +6,7 @@
  * Framework
  * Project:  SullivanCotter Client Portal
  * 
- * Table of Contents
+ *--Table of Contents--
  *  ^Readme
  *  ^Helpers..................Arbitrary helper classes
  *  ^Fonts....................Embedded typekit and weights
@@ -14,17 +14,30 @@
  *  ^Headings.................h1-h6 elements
  *  ^Typography...............<p> elements and other minor type elements
  *  ^Links....................Anchor links
+ *  ^Collapseable Links
  *  ^Lists
+ *  ^Pagination
  *  ^Tables
+ *  ^Status Colors............Warnings/Errors and info boxes
+ *  ^Modals
+ *  ^Dropdowns
+ *--Form Elements--
  *  ^Forms
+ *  ^Control Groups...........Styles for grouping forms together.
  *  ^Buttons
+ *  ^Search Box...............Encase search <input> with an icon button
  *  ^Icons
  *  ^Alerts
- *  ^Modals
- *  ^Nav - Abstraction
- *  ^Island - Abstraction
- *  ^Inset/Outset - Abstraction
- *  ^Separator - Abstraction
+ *--Abstractions--
+ *  ^Nav
+ *  ^Island
+ *  ^Inset/Outset
+ *  ^Separator
+ *  ^Tabs
+ *--Other--
+ *  ^Key Value Display
+
+
  * ============================================*/
 
 /*============================================
@@ -78,6 +91,10 @@
 .aligncenter
   text-align: center
 
+//
+
+.inline
+  display: inline
 
 // Clearfix
 .cf
@@ -102,6 +119,13 @@
 .danger
   color: $red
 
+.unimportant
+  color: $black
+
+// Hides things
+
+.hidden
+  display: none
 
 /*============================================
  ^Grid
@@ -114,13 +138,22 @@ $colspacing: 0.73%
   float: left
   margin-left: $colspacing
 
+  @media screen and (max-width: 750px)
+    margin-left: 0 !important
+    margin-left: 0 !important
+    width: 100% !important
+
 .container
   display: block
   margin: 0 auto
-  width: 1012px
+  padding-left: $base*4
+  padding-right: $base*4
+  max-width: 1400px
+  min-width: 600px
+  width: 100%
 
 .row
-  margin-left: - $colspacing
+  margin-left: $colspacing
   &:after
     content: ""
     display: block
@@ -167,16 +200,12 @@ html,body
  * ==========================================*/
 
 
-/*============================================
- ^Typography
- * ==========================================*/
-
 h1,h2,h3,h4,h5,h6
   font-weight: 500
   text-shadow: 0 1px 0 #fff
 
 h1,
-.page-title
+.h1
   border-bottom: solid 1px $grey20
   color: $darkblue
   font-size: $base*4
@@ -195,11 +224,12 @@ h1,
     position: absolute
     left: 0
     width: 100%
+
   &:before
-    left: -32px
+    left: -$base*4
   &:after
     left: auto
-    right: -32px
+    right: -$base*4
 
   &.borderless
     border-bottom: none
@@ -210,18 +240,22 @@ h1,
 
 
 h2,
-.second-heading
+.h2
   color: $grey100
   font-size: $base*3
   margin: 0 0 $base*3 0
   padding-top: $base*2
 
 h3,
-.third-heading
+.h3
   color: $darkyellow
   margin: 0 0 $base*2 0
   padding-top: $base*2
   text-transform: uppercase
+
+/*============================================
+ ^Typography
+ * ==========================================*/
 
 p
   margin: 0 0 $base*2 0
@@ -254,6 +288,45 @@ a
   &:focus
     top: 1px
 
+
+/*============================================
+ ^Collapseable Links
+ * ==========================================*/
+
+.collapse-link
+  border: none
+  color: $black
+  font-weight: 500
+  position: relative
+  padding-left: $base*2
+  &:hover
+    border: none
+    text-decoration: underline
+
+  &:before
+    content: "▼"
+    display: block
+    font-size: 10px
+    left: 0
+    position: absolute
+    top: 0
+
+    .ie8 &
+      font-size: 16px
+
+  &.collapsed
+    color: $blue
+    &:before
+      content: "▶"
+      .ie8 &
+        font-size: 10px
+.collapse
+  height: 0
+  overflow: hidden
+
+  &.in
+    height: auto
+
 /*============================================
  ^Lists
  * ==========================================*/
@@ -262,13 +335,16 @@ ul,ol
   margin-left: $base*3
   li
     margin-bottom: $base
-
+  &:last-child
+    margin-bottom: 0
 ul,
 ul li
   list-style: disc
 ol,
 ol li
   list-style: decimal
+
+
 
 /*============================================
  ^Tables
@@ -277,7 +353,12 @@ table
   border-collapse: collapse
   border-spacing: 0
   display: table
+  margin-bottom: $base*4
   width: 100%
+
+  &:last-child
+    margin-bottom: 0
+
 thead
   display: table-row-group !important
   float: none !important
@@ -285,14 +366,18 @@ thead
     border-bottom: solid 1px $grey30
     color: $black
     display: table-cell
+    line-height: $base*2.5
     padding: $base/2 $base
     font-weight: 500
     text-align: left
     text-transform: uppercase
+    vertical-align: bottom
+  
   .sortable
     padding-right: $base*2
     a
       @include transition (none)
+      border: transparent
       color: $black
       display: inline-block
       padding-right: 14px
@@ -352,6 +437,14 @@ tbody
   width: 12.5%      /* 1/8 */
 .t15 
   width: 15% 
+.t16 
+  width: 16% 
+.t17 
+  width: 17% 
+.t18 
+  width: 18% 
+.t19 
+  width: 19% 
 .t20 
   width: 20% 
 .t25 
@@ -393,28 +486,139 @@ tbody
 .t90 
   width: 90% 
 .t95 
-  width: 95% 
+  width: 95%
+
+table.form-table
+  margin-top: $base*2
+  thead
+    td,th
+      font-size: 14px
+      text-transform: none
+
+
+/*============================================
+ ^Pagination
+ * ==========================================*/
+
+.pagination
+
+  text-align: center
+  .btn
+    margin: 0 8px
+  input[type=text]
+    color: $blue
+    font-weight: 600
+    width: 45px
+  small
+    color: $grey50
+    display: block
+    padding-top: $base*2
+
+
+
+/*============================================
+ ^Status Colors
+ * ==========================================*/
+
+.info,
+  background: desaturate(lighten($blue, 55%), 60%) !important
+  border: solid 1px $blue !important
+  color: $darkblue !important
+
+  .close
+    color: $darkblue
+
+.warning
+  background: desaturate(lighten($yellow, 50%), 50%) !important
+  border: solid 1px $yellow !important
+  color: $darkyellow !important
+
+  .close
+    color: $darkyellow
+
+.error
+  background: desaturate(lighten($red, 55%), 60%) !important
+  border: solid 1px $red !important
+  color: $darkred !important
+
+  .close
+    color: $darkred
+
+
+
+/*============================================
+ ^Modals
+ * ==========================================*/
+
+/*============================================
+ ^Dropdowns
+ * ==========================================*/
+.dropdown
+  display: inline-block
+  position: relative
+
+.dropdown-menu
+  background: #fff
+  border: solid 1px $grey40
+  border-radius: $base/2
+  box-shadow: 0 1px 5px rgba(0,0,0, .20)
+  display: none
+  position: absolute
+  padding: $base/2 0
+  right: 0
+  top: 100%
+  width: 200px
+  z-index: 10
+
+  .open &
+    display: block
+
+  a
+    border-bottom: none
+    color: $grey100
+    padding: $base/2 $base*2
+
+    &:hover
+      @include gradient ($blue, ($blue, darken($blue, 10%)))
+      border-bottom: none
+      color: #fff
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:active
+      background: none
+      color: $grey50
+      cursor: default
+      top: 0  
+
+  li:first-child a
+    border-radius: $base/2 $base/2 0 0 
+  li:last-child a
+    border-radius: 0 0 $base/2 $base/2
+  li.sep
+    margin: $base/2 0
+
+
 
 /*============================================
  ^Forms
  * ==========================================*/
 
-$defaultWidth: 470px
-$skinnyWidth: 135px
-
-
-
 /*
- * Wrap all sets of questions & answers with a <div class="control-group"/> or
- * <p class="control-group">. Maintain this relationship when handling dependent questions.
- * e.g.:
- * <ul class=nav>
- *     <li><a href=#>Home</a></li>
- *     <li><a href=#>About</a></li>
- *     <li><a href=#>Portfolio</a></li>
- *     <li><a href=#>Contact</a></li>
- * </ul>
+ * Fieldsets provide a little grouping and spacing
  */
+
+fieldset
+  border-bottom: solid 1px $grey20
+  margin-bottom: $base*2
+  padding-bottom: $base*4
+
+  &:last-child
+    border-bottom: none
+    margin-bottom: 0
+
+$defaultWidth: 75%
+$skinnyWidth: 30%
+$midWidth: 50%
 
 textarea,
 select,
@@ -435,10 +639,11 @@ input[type="week"]
   @extend .inset
   border-radius: 0
   color: $black
+  display: inline-block
   outline: 0
   padding: $base*.25 $base 0 $base
   text-align: left
-  font-size: 15px
+  font-size: $base*1.75 
   font-family: Arial, "Liberation Sans", FreeSans, sans-serif
   height: $base*4.5
 
@@ -449,15 +654,37 @@ input[type="week"]
   .control-group &
     width: 100%
 
+  .control-group-horizontal &
+    float: right
+    position: relative
+    top: $base*2.25
+    width: $skinnyWidth
+
+  .control-group-error &
+    @extend .error
+
+  .ie8 &
+    padding-top: $base
+
+  &.skinny
+    margin-right: 8px
+    width: $skinnyWidth
+
+    &:last-child
+      margin-right: 0
+
+  &.mid
+    width: $midWidth
+
 select
-  padding-top: $base
+  padding: $base
+
 
   @media only screen and (-webkit-min-device-pixel-ratio: 0)
     &
       background-image: url(../images/bg-select.png) !important
       background-repeat: no-repeat
       background-position: center right
-      padding-top: $base*.25
 
 
 ::-webkit-input-placeholder 
@@ -466,15 +693,118 @@ select
 input:-moz-placeholder,
 textarea:-moz-placeholder 
   color: $grey50
+textarea
+  height: $base*12
+  padding: $base
+/*
+ * Wrap all sets of questions & answers with a <div class="control-group"/> or
+ * <p class="control-group">. Maintain this relationship when handling dependent questions.
+ * e.g.:
+ * <div class="control-group">
+ *     <label></label>
+ *     <input />
+ *     <div class="control-group">
+ *        <label></label>
+ *        <input />
+ *     </div>
+ * </div>
+ */
+
 
 .control-group
-  @extend .cf
+  display: block
+  float: left
   margin: 0
   position: relative
   width: $defaultWidth
 
+  @media screen and (max-width: 600px)
+    width: 100%
+
   .control-group
+    display: block
+    float: left
     padding-left: $base*8
+    width: 100%
+
+  &.full-width
+    max-width: 100%
+    width: 100%
+
+  &:hover,
+  .touch &
+    .message
+      opacity: 1
+
+.control-group-horizontal
+  label,
+  .label
+    max-width: $defaultWidth - $skinnyWidth
+    float: left
+
+.control-group-error:after
+  @extend .icon
+  @extend .icon-error
+  bottom: $base*1.5
+  content: ""
+  display: block
+  position: absolute
+  right: $base*1.5
+
+.control-group-horizontal:after
+  bottom: auto
+  top: $base*3.5
+
+.message
+  @include transition (opacity .25s)
+  border-radius: $base/2
+  bottom: 0
+  display: block
+  font-weight: 500
+  margin-left: $base*2
+  opacity: 0
+  padding: $base
+  position: absolute
+  left: 100%
+  text-shadow: 0 1px 0 rgba(0,0,0,.25)
+  width: 33%
+  z-index: 1
+
+  &:before
+    @include transform (rotate(45deg))
+    bottom: $base*1.5
+    content: ""
+    display: block
+    height: $base*1.5
+    left: -$base*1.5/2
+    position: absolute
+    width: $base*1.5
+
+  &.error-message,
+  &.error-message:before
+    background: $red
+    color: #fff
+
+  .control-group-horizontal &
+    bottom: auto
+    top: $base*1.75
+
+    &:before
+      bottom: auto
+      top: $base*2
+
+  .full-width &
+    bottom: auto
+    left: auto
+    right: 0
+    margin-top: $base*2
+    top: 100%
+
+    &:before
+      left: auto
+      right: $base*1.5
+      top: -$base*1.5/2
+
 
 
 label,
@@ -482,11 +812,63 @@ label,
   color: $grey100
   display: block
   font-weight: 500
-  padding: $base*3 0 $base
+  margin: 0
+  padding: $base*3 $base*2 $base 0
 
   .additional
     display: block
-    font-weight: 300
+
+  &.full-width
+    max-width: 100%
+    width: 100%
+
+/*
+ * Checklist & radio question formates
+ * e.g.:
+ * <div class="control-group">
+ *     <label>Pick one...</label>
+ *     <ul class="checklist">
+ *     <li>
+ *        <label for="one">
+ *          <input id="one" name="one" type="checkbox" /> One
+ *        </label>
+ *     </li>
+ *   </ul>
+ * </div>
+ */
+
+.checklist,
+ul.checklist,
+ol.checklist
+  list-style: none
+  margin: 0
+  padding: 0
+  label
+    cursor: pointer
+    font-weight: 400
+    padding: $base/4 $base*2 $base/4 $base*3.25
+    position: relative
+
+    &:hover
+      background: darken($grey5, 1%)
+  li
+    margin: 0
+    list-style: none
+
+  input[type=checkbox],
+  input[type=radio]
+    left: 2px
+    position: absolute  
+    top: 5px
+
+    &.vertically-centered
+      margin-top: -5px
+      top: 50%
+
+ 
+      
+.submit-group
+  @extend .cf
 
 
 /*============================================
@@ -501,8 +883,8 @@ label,
   display: inline-block
   font: inherit
   font-weight: 500
-  margin: 0 $base 0 0
-  padding: $base $base*2
+  margin: 0 $base $base 0
+  padding: $base $base*2 $base
   position: relative
   text-transform: uppercase
 
@@ -525,8 +907,10 @@ label,
     @include gradient (lighten($blue, 1%), (lighten($blue, 1%), darken($blue, 1%)))
     border-color: darken($darkblue, 10%)
 
-  &:active
+  &:active,
+  .open &
     background: darken($blue, 10%)
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.25), 0 1px 0 #fff
 
   &.btn-disabled
     background: desaturate(lighten($blue, 40%), 50%)
@@ -545,6 +929,7 @@ label,
 
   &:active
     background: darken($yellow, 10%)
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.25), 0 1px 0 #fff
 
   &.btn-disabled
     background: desaturate(lighten($yellow, 40%), 50%)
@@ -562,6 +947,7 @@ label,
     border-color: darken($grey50, 10%)
   &:active
     background: darken($grey20, 10%)
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.25), 0 1px 0 #fff
 
   &.btn-disabled
     background: $grey15
@@ -626,9 +1012,98 @@ label,
     top: -1px
 
 
+
+
+/*============================================
+ ^Search box
+ * ==========================================*/
+
+/*
+ * Format
+ * e.g.:
+ * <div class="search">
+ *     <input type="text" placeholder="Search..." />
+ *     <a href="" class="btn btn-yellow btn-small btn-search"></a>
+ * </div>
+ */
+
+.search 
+  background: #fff
+  border: solid 1px $grey20
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.10), 0 1px 0 #fff
+  display: inline-block
+  padding: 1px 35px 1px 1px
+  position: relative
+
+  input[type=text]
+    background: none
+    border: none
+    box-shadow: none
+    padding: 0 0 0 $base - 1
+
+    &:focus
+      border-color: none
+      box-shadow: none
+
+    .ie8 &
+      padding-top: $base + 2
+  .btn-search
+    bottom: 2px
+    right: 2px
+    top: 2px
+    margin: 0
+    padding: 0
+    position: absolute
+    width: 34px
+
+    &:after
+      background: url(../images/icon-search.png) center center no-repeat
+      content: ""
+      display: block
+      height: 100%
+      width: 100%
+
+
+
 /*============================================
  ^Icons
  * ==========================================*/
+
+.icon
+  background-position: 0 0
+  background-repeat: no-repeat
+  display: inline-block
+  height: 14px
+  width: 14px
+  .backgroundsize &
+    background-size: 14px 14px
+
+.icon-ok
+  background-image: url(../images/icon-ok.png)
+  .backgroundsize &
+    background-image: url(../images/icon-ok-2x.png)
+
+.icon-warning
+  background-image: url(../images/icon-warning.png)
+  .backgroundsize &
+    background-image: url(../images/icon-warning-2x.png)
+
+.icon-error
+  background-image: url(../images/icon-error.png)
+  .backgroundsize &
+    background-image: url(../images/icon-error-2x.png)
+
+.icon-empty
+  background-image: url(../images/icon-empty.png)
+  .backgroundsize &
+    background-image: url(../images/icon-empty-2x.png)
+
+.icon-close
+  background-image: url(../images/icon-close.png)
+  .backgroundsize &
+    background-image: url(../images/icon-close-2x.png)
+
+
 
 
 
@@ -640,8 +1115,10 @@ label,
   border: solid 1px
   border-radius: $base/2
   box-shadow: 0 1px 0 #fff
-  position: relative
+  display: none
   font-weight: 500
+  position: relative
+  text-shadow: 0 1px 0 #fff
 
   .close
     font-size: $base*3
@@ -657,37 +1134,8 @@ label,
     &:active
       top: $base/2+1
 
-
-.alert-info
-  background: desaturate(lighten($blue, 50%), 60%)
-  border-color: $blue
-  color: $darkblue
-
-  .close
-    color: $darkblue
-
-.alert-warning
-  background: desaturate(lighten($yellow, 50%), 50%)
-  border-color: $yellow
-  color: $darkyellow
-
-  .close
-    color: $darkyellow
-
-.alert-error
-  background: desaturate(lighten($red, 50%), 60%)
-  border-color: $red
-  color: $darkred
-
-  .close
-    color: $darkred
-
-
-
-/*============================================
- ^Modals
- * ==========================================*/
-
+  &.in
+    display: block
 
 /*============================================
  ^Nav - Abstractions
@@ -708,7 +1156,6 @@ label,
 
 .nav
   list-style: none
-  margin: 0
   padding: 0
   @extend .cf
 
@@ -739,6 +1186,18 @@ label,
     > a,
     > span
       display: block
+
+.with-separator
+  > li:after
+    content: "|"
+    color: $grey40
+    display: inline
+    margin: 0 $base
+  > li:last-child:after
+    display: none
+
+
+
   
 
 /*============================================
@@ -780,17 +1239,6 @@ label,
  ^Separator - Abstractions
  * ==========================================*/
 
- /*
- * Seperators should be empty elements, creates a single line.
- * Combine with the grid system to get the proper width
- * e.g.:
- *
-   <div class="sep"></div>
-
-   <span class="col12 sep"></span>
- *
- */
-
 .sep
   @extend .cf
   background: $grey20
@@ -799,6 +1247,104 @@ label,
   font-size: 1px
   line-height: 1px
   height: 1px
-  margin-bottom: $base*2
+  margin: $base*4 0
 
+
+/*============================================
+ ^Tabs
+ * ==========================================*/
+ 
+.tab-nav
+  margin: 0 0 $base 0
+  a
+    background: #fff
+    border: solid 1px $grey20
+    border-radius: $base/2
+    display: block
+    padding: $base/2 $base
+
+    &:hover
+      background: $grey5
+      color: $grey100
+  .active
+    a
+      border-radius: $base/2 $base/2 0 0
+      &:after
+        background: #fff
+        border-left: solid 1px $grey20
+        border-right: solid 1px $grey20
+        bottom: -$base - 2
+        content: ""
+        display: block
+        height: $base + 2
+        left: -1px
+        right: -1px
+        position: absolute
+        z-index: 2
+      &:hover
+        background: #fff
+
+
+.tab-content
+  @extend .cf
+  margin-bottom: $base*3
+
+  &:last-child
+    margin: 0
+
+.tab
+  background: #fff
+  border: solid 1px $grey20
+  border-radius: 0 0 $base/2 $base/2
+  display: none
+
+  &.active
+    display: block
+
+
+/*============================================
+ ^Key Value Display
+ * ==========================================*/
+
+.key-value-display
+  display: table
+  margin-bottom: $base*3
+  overflow: hidden
+  width: 100%
+
+  &:last-child
+    margin: 0
+
+  dl
+    display: table-row
+  dt,dd
+    border-bottom: dashed 1px $grey20
+    display: table-cell
+    padding: $base*3 $base $base
+    width: 50%
+    ul,ol
+      margin-left: 0
+    li
+      list-style: none
+      margin-bottom: 0
+
+      &:after
+        content: ","
+        display: inline
+
+  dt
+    color: $grey50
+    vertical-align: bottom
+
+  dl.key-value-display-title
+    margin: 0
+    padding: 0 $base
+    width: 100%
+    
+    dt,dd
+      @extend .h3
+      border-bottom: solid 1px $grey40
+      color: $darkyellow
+      margin: 0
+      padding: 0 $base $base
 
