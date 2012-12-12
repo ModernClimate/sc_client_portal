@@ -1,6 +1,5 @@
-@import mixins
-@import reset
-
+@import 'mixins'
+@import 'reset'
   
 /*============================================
  * Framework
@@ -27,7 +26,9 @@
  *  ^Buttons
  *  ^Search Box...............Encase search <input> with an icon button
  *  ^Icons
+ *  ^Chosen
  *  ^Alerts
+ *  ^Tooltips
  *--Abstractions--
  *  ^Nav
  *  ^Island
@@ -36,6 +37,7 @@
  *  ^Tabs
  *--Other--
  *  ^Key Value Display
+ *  ^Affix
 
 
  * ============================================*/
@@ -115,12 +117,16 @@
   white-space: nowrap
 
 // Text Colors
-
+.placeholder
+  color: $grey50
 .danger
   color: $red
 
 .unimportant
   color: $black
+
+.yellow
+  color: $yellow
 
 // Hides things
 
@@ -195,25 +201,22 @@ html,body
   font-family: "freight-sans-pro", "Helvetica Neue", Arial, sans-serif
   font-weight: 400
 
+body
+  padding-bottom: $base*4
+
 /*============================================
  ^Headings
  * ==========================================*/
 
 
-h1,h2,h3,h4,h5,h6
+h3,h4,h5,h6
   font-weight: 500
   text-shadow: 0 1px 0 #fff
 
-h1,
-.h1
+.bordered
   border-bottom: solid 1px $grey20
-  color: $darkblue
-  font-size: $base*4
-  line-height: $base*5
-  margin: 0 0 $base*4 0
-  padding: 0 0 $base*3 0
+  margin-bottom: $base*4
   position: relative
-
   &:before,
   &:after
     background: $grey20
@@ -224,17 +227,28 @@ h1,
     position: absolute
     left: 0
     width: 100%
-
   &:before
     left: -$base*4
   &:after
     left: auto
     right: -$base*4
 
+h1,
+.h1
+  @extend .bordered
+  color: $darkblue
+  font-size: $base*4
+  font-weight: 400
+  line-height: $base*5
+  margin: 0 0 $base*4 0
+  padding: 0 0 $base*3 0
+
+  
+
   &.borderless
     border-bottom: none
     padding-bottom: 0
-    margin-bottom: $base*2
+    margin-bottom: $base*3
     &:after,&:before
       display: none
 
@@ -243,8 +257,14 @@ h2,
 .h2
   color: $grey100
   font-size: $base*3
+  font-weight: 400
   margin: 0 0 $base*3 0
   padding-top: $base*2
+
+  &:first-child
+    padding-top: 0
+  &:last-child
+    margin-bottom: 0
 
 h3,
 .h3
@@ -252,7 +272,15 @@ h3,
   margin: 0 0 $base*2 0
   padding-top: $base*2
   text-transform: uppercase
+  &:first-child
+    padding-top: 0
+  &:last-child
+    margin-bottom: 0
 
+h4,.h4
+  color: $black
+  margin: 0 0  $base
+  padding: 0
 /*============================================
  ^Typography
  * ==========================================*/
@@ -262,6 +290,8 @@ p
 
   &:last-child
     margin-bottom: 0
+  &.bordered
+    padding-bottom: $base*4
 
 code
   font-size: $base*1.75
@@ -345,6 +375,40 @@ ol li
   list-style: decimal
 
 
+.divided-overview
+  .overview-title
+    text-transform: uppercase
+  a
+    @include transition(color .25s border .25s)
+    border-bottom: solid 1px rgba(255,255,255,0)
+    color: $black
+
+    &:hover
+      color: $blue
+      border-bottom: solid 1px
+  ul,ol
+    margin-left: $base*2
+  li
+    margin: 0
+    padding: $base*2 0
+  li li li
+    padding: $base*2 0 0 0
+  > li > ul,
+  > li > ol
+    margin-top: $base*2
+    > li
+      border-top: solid 1px $grey20
+
+ol.divided-overview
+  color: $yellow
+
+  ol,ul
+    color: $grey100
+    li
+      list-style: none
+
+.label + .divided-overview
+  border-top: solid 1px $grey20
 
 /*============================================
  ^Tables
@@ -373,47 +437,51 @@ thead
     text-transform: uppercase
     vertical-align: bottom
   
-  .sortable
-    padding-right: $base*2
-    a
-      @include transition (none)
+  th a
+    @include transition (none)
+    border: transparent
+    color: $black
+    display: inline-block
+    padding-right: 14px
+    position: relative
+    &:after,
+    &:before
+      color: $grey20
+      content: "▲"
+      display: block
+      font-size: 8px
+      position: absolute
+      right: 0
+      top: -4px
+    &:after
+      content: "▼"
+      margin-top: 8px
+    &:hover,
+    &:hover:before,
+    &:hover:after
       border: transparent
-      color: $black
-      display: inline-block
-      padding-right: 14px
-      position: relative
-      &:after,
-      &:before
-        color: $grey40
-        content: "▲"
-        display: block
-        font-size: 8px
-        position: absolute
-        right: 0
-        top: -4px
+      color: $blue
+    &.current:hover
+      &:before,
       &:after
-        content: "▼"
-        margin-top: 8px
-      &:hover,
-      &:hover:before,
-      &:hover:after
-        border: transparent
         color: $blue
-  .sorted-down
-    a:before
-      display: none
-    a:after 
-      color: $black
-      font-size: 10px
-      top: -7px
 
-  .sorted-up
-    a:before
-      color: $black
-      font-size: 10px
-      top: 0px
-    a:after 
-      display: none
+    &.asc
+      &:before
+        display: none
+      &:after 
+        color: $black
+        font-size: 10px
+        top: -7px
+    &.desc
+      &:before
+        color: $black
+        font-size: 10px
+        top: 0px
+      &:after 
+        display: none
+
+
 
 tbody
   display: table-row-group !important
@@ -423,6 +491,12 @@ tbody
     display: table-cell
     padding: $base
     text-align: left
+    &.tree-offset1
+      padding-left: $base*3
+    &.tree-offset2
+      padding-left: $base*6
+    .offset1
+      margin-left: 0
   tr:hover
     td,th
       background: $grey5
@@ -544,11 +618,102 @@ table.form-table
   .close
     color: $darkred
 
-
+.status-in-progress
+  color: $yellow
+.status-errors
+  color: $red
+.status-complete
+  color: $blue
 
 /*============================================
  ^Modals
  * ==========================================*/
+
+.modal-backdrop
+  @include transition(opacity .25s)
+  background: $black 
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1040
+
+.modal-backdrop.fade 
+  opacity: 0
+.modal.hide
+  display: none
+
+.modal-backdrop,
+.modal-backdrop.fade.in 
+  opacity: 0.8
+  filter: alpha(opacity=80)
+
+.modal 
+  box-shadow: 0 1px 5px rgba(0,0,0,.5)
+  position: fixed
+  top: 10%
+  left: 50%
+  z-index: 1050
+  width: 70%
+  margin-left: -35%
+  background-color: #ffffff
+  border: 1px solid #999
+  border: 1px solid rgba(0, 0, 0, 0.3)
+  outline: none
+
+
+.modal.fade 
+  top: -25%
+
+.modal.fade.in 
+  top: 10%
+
+.modal-header 
+  background: $grey10
+  box-shadow: inset 0 -1px 3px -1px rgba(0,0,0,.10)
+  border-bottom: 1px solid $grey30
+  position: relative
+
+.modal-header .close 
+  font-size: $base*3
+  line-height: normal
+  padding: 0 $base*1.5 $base/2
+  position: absolute
+  top: $base*2.5
+  right: $base*3
+
+  &:active
+    top: $base*2.5 + 1
+
+.modal-title
+  color: $darkblue
+  display: block
+  font-size: $base*3.5
+  line-height: $base*4 
+  margin: 0
+  padding: $base*3 $base*6 $base*3 $base*3
+  text-shadow: 0 1px 0 #fff
+
+
+.modal-body 
+  @extend .cf
+  position: relative
+  max-height: 400px
+  padding: $base*3
+  overflow-y: auto
+
+
+.modal-form 
+  margin-bottom: 0
+
+.modal-footer 
+  background: $grey10
+  box-shadow: inset 0 1px 3px -1px rgba(0,0,0,.10)
+  border-top: 1px solid $grey30
+  overflow: hidden
+  padding: $base*3
+  position: relative
 
 /*============================================
  ^Dropdowns
@@ -615,8 +780,12 @@ fieldset
   &:last-child
     border-bottom: none
     margin-bottom: 0
+  .sep
+    float: left
+    margin-top: $base*4
+    width: 100%
 
-$defaultWidth: 75%
+$defaultWidth: 80%
 $skinnyWidth: 30%
 $midWidth: 50%
 
@@ -712,11 +881,35 @@ textarea
 
 
 .control-group
+  @include transition(opacity .25s)
   display: block
   float: left
   margin: 0
   position: relative
   width: $defaultWidth
+  .nav
+    margin-left: 0
+  .group-title
+    color: $darkyellow
+    margin: 0 0 $base*2 0
+    padding-top: $base*2
+    text-transform: uppercase
+    margin-bottom: 0
+
+    .num
+      color: $darkyellow
+      top: $base*2
+
+
+  .num
+    color: $grey50
+    display: block
+    font-size: $base*1.75
+    left: 0
+    height: 10px
+    position: absolute
+    top: $base*3
+    width: 30px
 
   @media screen and (max-width: 600px)
     width: 100%
@@ -724,22 +917,44 @@ textarea
   .control-group
     display: block
     float: left
-    padding-left: $base*8
+    padding-left: $base*5
     width: 100%
+
+    &.numbered
+      padding-left: $base*6
 
   &.full-width
     max-width: 100%
     width: 100%
+    
+  &.numbered
+    padding-left: $base*4
 
   &:hover,
   .touch &
     .message
       opacity: 1
 
+  .additional,
+  .error-message
+    font-size: $base*1.75
+    float: left
+    margin: 0 0 $base 0
+    width: 100%
+
+    .control-group-horizontal &
+      margin: $base 0 0 0 
+  .additional
+    color: $grey50
+  .last-year
+    color: $yellow
+  .error-message
+    @extend .danger
+
 .control-group-horizontal
   label,
   .label
-    max-width: $defaultWidth - $skinnyWidth
+    max-width: $defaultWidth - $skinnyWidth/2
     float: left
 
 .control-group-error:after
@@ -754,6 +969,42 @@ textarea
 .control-group-horizontal:after
   bottom: auto
   top: $base*3.5
+
+.control-group-btn
+  padding-top: $base*3
+
+.control-group-disabled
+  li.last-year label:before,
+  li.last-year:after
+    display: none !important
+  label:hover
+    background: #fff !important
+  label,p,span
+    color: $grey30 !important
+    cursor: default !important
+    text-shadow: 0 !important
+  input,select
+    background: $grey10 !important
+    border-color: $grey15 !important
+    color: $grey15 !important
+    box-shadow: none !important
+  input[type=radio],
+  input[type=checkbox]
+    opacity: 0.5
+    -moz-opacity: 0.5
+    filter: alpha(opacity=5)
+
+  ::-webkit-input-placeholder 
+    color: $grey15
+
+  input:-moz-placeholder,
+  textarea:-moz-placeholder 
+    color: $grey15
+
+
+
+
+
 
 .message
   @include transition (opacity .25s)
@@ -815,9 +1066,6 @@ label,
   margin: 0
   padding: $base*3 $base*2 $base 0
 
-  .additional
-    display: block
-
   &.full-width
     max-width: 100%
     width: 100%
@@ -846,7 +1094,7 @@ ol.checklist
   label
     cursor: pointer
     font-weight: 400
-    padding: $base/4 $base*2 $base/4 $base*3.25
+    padding: $base/2 $base*2 $base/2 $base*3.25
     position: relative
 
     &:hover
@@ -855,15 +1103,55 @@ ol.checklist
     margin: 0
     list-style: none
 
+  li.last-year
+    position: relative
+    span.last-year-value
+      color: $yellow
+      display: inline-block
+      position: relative
+      
+    label 
+      position: relative
+      &:before
+        background-position: 0 0
+        background-repeat: no-repeat
+        background-image: url(../images/icon-check.png)
+        content: ""
+        display: block
+        height: 14px
+        margin-top: -6px
+        position: absolute
+        left: -$base*4
+        top: 50%
+        width: 14px
+        .backgroundsize &
+          background-image: url(../images/icon-check-2x.png)
+          background-size: 14px 14px
+    &:after
+      content: attr(data-last-year)
+      color: $yellow
+      display: block
+      float: right
+      font-size: $base*1.75
+      left: 5%
+      margin-top: -$base*5
+      position: relative
+      width: 35%
+      z-index: 1
+
   input[type=checkbox],
   input[type=radio]
     left: 2px
     position: absolute  
-    top: 5px
+    top: 6px
+    width: 13px
 
     &.vertically-centered
       margin-top: -5px
       top: 50%
+    &.vertically-centered + input
+      margin-left: $base
+      margin-right: $base
 
  
       
@@ -937,16 +1225,17 @@ ol.checklist
     color: $bodybg
 
 .btn-grey
-  @include gradient ($grey20, ($grey20, darken($grey20, 10%)))
-  border-color: $grey60
+  @include gradient ($grey5, ($grey5, $grey10))
+  border-color: $grey30
   color: $grey100
   text-shadow: 0 -1px 0 rgba(255,255,255,.25)
 
   &:hover
-    @include gradient (lighten($grey20, 1%), (lighten($grey20, 1%), darken($grey20, 1%)))
-    border-color: darken($grey50, 10%)
-  &:active
-    background: darken($grey20, 10%)
+    @include gradient (lighten($grey5, 1%), (#fff, darken($grey10, 1%)))
+    border-color: $grey40
+  &:active,
+  &.active
+    background: darken($grey5, 5%)
     box-shadow: inset 0 1px 2px rgba(0,0,0,.25), 0 1px 0 #fff
 
   &.btn-disabled
@@ -958,7 +1247,7 @@ ol.checklist
   background: none
   border: none
   box-shadow: none
-  font-weight: 600
+  font-weight: 500
   text-shadow: 0 1px 1px rgba(255,255,255,.75)
   &:hover
     background: none
@@ -1001,6 +1290,15 @@ ol.checklist
       z-index: 2
     &:active
       top: 0
+  .btn-section
+    .btn
+      border-radius: 0
+    &:first-child
+      .btn:first-child
+        border-radius: $base/2 0 0 $base/2
+    &:last-child
+      .btn:last-child
+        border-radius: 0 $base/2 $base/2 0
 
 .btn-dropdown
   &:after
@@ -1010,7 +1308,6 @@ ol.checklist
     margin-left: $base
     position: relative
     top: -1px
-
 
 
 
@@ -1077,6 +1374,9 @@ ol.checklist
   width: 14px
   .backgroundsize &
     background-size: 14px 14px
+  &.icon-inline
+    position: relative
+    top: 2px    
 
 .icon-ok
   background-image: url(../images/icon-ok.png)
@@ -1103,9 +1403,158 @@ ol.checklist
   .backgroundsize &
     background-image: url(../images/icon-close-2x.png)
 
+.icon-next
+  background-image: url(../images/icon-next.png)
+  .backgroundsize &
+    background-image: url(../images/icon-next-2x.png)
+
+.icon-prev
+  background-image: url(../images/icon-prev.png)
+  .backgroundsize &
+    background-image: url(../images/icon-prev-2x.png)
 
 
 
+/*============================================
+ ^Chosen
+ * ==========================================*/
+
+.chzn-container
+  @extend select
+  position: relative
+  padding: 0
+
+.chzn-drop
+  @extend .dropdown-menu
+  padding: 0
+
+.chzn-container-active
+  border-color: $blue !important
+  box-shadow: 0 0 5px transparentize($blue, .70) !important
+
+  .chzn-drop
+    display: block
+
+.chzn-search
+  border-bottom: solid 1px $grey20
+  margin: 0
+  padding: $base
+
+.chzn-results
+  margin: $base 0
+  padding: 0
+
+  li
+    display: none
+
+  .active-result
+    cursor: pointer
+    display: block
+    list-style: none
+    padding: 0 $base
+
+    &:hover
+      @include gradient ($blue, ($blue, darken($blue, 10%)))
+      border-bottom: none
+      color: #fff
+
+      em
+        background: none
+  em
+    background: desaturate(lighten($yellow, 40%), 10%)
+    color: $black
+    font-style: normal
+
+/*
+ * Single Chosen Select
+ */
+
+.chzn-single
+  border: none
+  color: $black
+  display: block
+  line-height: $base*2+2
+  padding: $base
+
+  &:hover
+    border: none
+  &:active
+    top: 0
+
+
+/*
+ * Multi select chosen
+ */
+
+.chzn-container-multi
+  height: auto
+
+.chzn-choices
+  @extend .cf
+  margin: 0
+  padding: $base/2 $base/2 $base/4 
+  li
+    display: block
+    margin: 0 $base/4 $base/4 0
+    float: left
+
+  li.search-field 
+    background: none
+    padding-right: $base*3
+    input
+      height: $base*3
+
+  .search-field input,
+  .search-field input:focus,
+  .search-field input:hover
+    border: none
+    box-shadow: none
+
+  .search-choice,
+  .search-choice:hover,
+  .search-choice:active
+    @include gradient ($grey10, ($grey10, darken($grey10, 10%)))
+    border: solid 1px $grey50
+    border-radius: $base/4
+    color: $grey100
+    display: block
+    margin: 0 $base/2 $base/2 0
+    padding: 0 $base*3 0 $base
+    position: relative
+    text-shadow: 0 -1px 0 rgba(255,255,255,.25)
+    top: 0
+    text-transform: none
+
+  .search-choice-close
+    border: none
+    content: ""
+    display: block
+    height: 100%
+    position: absolute
+    top: 0
+    right: 0
+    width: $base*3
+
+    &:after
+      content: "\00D7"
+      color: $grey100
+      display: block
+      font-weight: 500
+      font-size: $base*2.5
+      height: 100%
+      left: 0
+      line-height: normal
+      position: absolute
+      top: 2px
+      text-align: center
+      width: 100%
+
+    &:hover
+      &:after
+        color: $red
+
+  .search-field
+    background: #fff
 
 /*============================================
  ^Alerts
@@ -1137,6 +1586,73 @@ ol.checklist
   &.in
     display: block
 
+.notice
+  @extend .alert
+  @extend .island-small
+  @extend .info
+  display: block !important
+
+.errors
+  @extend .alert
+  @extend .error
+  @extend .island-small
+  display: block !important
+
+
+  div.error
+    border: none !important
+    background: none !important
+
+
+
+/*============================================
+ ^Tooltips - Copied from twitter bootstrap
+ * ==========================================*/
+
+.tooltip
+  @include transition(opacity .25s)
+  position: absolute
+  z-index: 1030
+  display: block
+  margin-top: -3px
+  padding: 5px
+  font-size: 13px
+  opacity: 0
+  filter: alpha(opacity=0)
+  visibility: visible
+
+
+.tooltip.in
+  opacity: 0.8
+  filter: alpha(opacity=80)
+
+
+
+.tooltip-inner
+  max-width: 400px
+  padding: 3px 8px
+  color: #ffffff
+  text-align: center
+  text-decoration: none
+  text-transform: uppercase
+  background-color: #000000
+  border-radius: 4px
+  text-shadow: none
+  white-space: nowrap
+
+.tooltip-arrow
+  position: absolute
+  width: 0
+  height: 0
+  border-color: transparent
+  border-style: solid
+  bottom: 0
+  left: 50%
+  margin-left: -5px
+  border-top-color: #000000
+  border-width: 5px 5px 0
+
+
 /*============================================
  ^Nav - Abstractions
  * ==========================================*/
@@ -1166,7 +1682,9 @@ ol.checklist
     display: inline-block
     margin: 0
     zoom: 1
-      
+.nav-centered
+  text-align: center
+     
 
 /**
  * `.stacked` extends `.nav` and throws the list into vertical mode, e.g.: 
@@ -1193,9 +1711,16 @@ ol.checklist
     color: $grey40
     display: inline
     margin: 0 $base
-  > li:last-child:after
+  > li:last-child:after,
+  > li.last:after
     display: none
 
+
+.nav
+  li
+    input
+      position: relative
+      top: -$base
 
 
   
@@ -1247,7 +1772,7 @@ ol.checklist
   font-size: 1px
   line-height: 1px
   height: 1px
-  margin: $base*4 0
+  margin: $base*2 0
 
 
 /*============================================
@@ -1256,33 +1781,42 @@ ol.checklist
  
 .tab-nav
   margin: 0 0 $base 0
-  a
-    background: #fff
-    border: solid 1px $grey20
-    border-radius: $base/2
-    display: block
-    padding: $base/2 $base
 
-    &:hover
-      background: $grey5
-      color: $grey100
-  .active
-    a
-      border-radius: $base/2 $base/2 0 0
-      &:after
-        background: #fff
-        border-left: solid 1px $grey20
-        border-right: solid 1px $grey20
-        bottom: -$base - 2
-        content: ""
-        display: block
-        height: $base + 2
-        left: -1px
-        right: -1px
-        position: absolute
-        z-index: 2
-      &:hover
-        background: #fff
+.tab-nav a,
+.fake-tab.collapsed
+  background: #fff
+  border: solid 1px $grey20
+  border-radius: $base/2
+  display: inline-block
+  padding: $base/2 $base
+
+  &:hover
+    background: $grey5
+    color: $grey100
+  &:after
+    display: none
+
+.tab-nav .active a,
+.fake-tab
+  border-radius: $base/2 $base/2 0 0
+  border: solid 1px $grey20
+
+  padding: $base/2 $base
+  &:after
+    background: #fff
+    border-left: solid 1px $grey20
+    border-right: solid 1px $grey20
+    bottom: -$base - 2
+    content: ""
+    display: block
+    height: $base + 2
+    left: -1px
+    right: -1px
+    position: absolute
+    z-index: 2
+  &:hover
+    background: #fff
+    border-bottom: solid 1px $grey20
 
 
 .tab-content
@@ -1348,3 +1882,10 @@ ol.checklist
       margin: 0
       padding: 0 $base $base
 
+/*============================================
+ ^Affix
+ * ==========================================*/
+
+.affixed
+  position: fixed
+  top: 0

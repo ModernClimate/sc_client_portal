@@ -1,5 +1,5 @@
-@import mixins
-  
+@import 'mixins'
+
 /*============================================
  * Main Stylesheet
  * Project:  SullivanCotter Client Portal
@@ -9,6 +9,15 @@
  *  ^Main Nav
  *  ^Sub Nav
  *  ^Breadcrumbs
+ *  ^Actions
+ *  ^Devise
+ *--Survey Summaries--
+ *  ^Survey Summary Box
+ *  ^Task Summary Box
+ *--Survey Specific--
+ *  ^Survey Navigation
+ *  ^Assignments 
+
  * ============================================*/
 
 
@@ -20,11 +29,12 @@
   background: url(../images/bg-noise-blue.png)
   border-bottom: solid 1px $darkblue
   box-shadow: 0 1px 0 #fff, inset 0 -1px 4px -1px rgba(0,0,0,.25)
-  height: $base * 4
+  min-height: $base
   text-shadow: 0 1px 1px rgba(0,0,0,.5)
 
 .utilities-nav
   font-size: $base * 2 * 0.875
+  height: $base * 4
   margin: 0 auto
   overflow: hidden
   text-align: right
@@ -103,7 +113,8 @@
     position: relative
     top: 1px
 
-    &.first
+    &.first,
+    &:first-child
       padding-left: 0
   a
     color: $grey80
@@ -171,6 +182,7 @@
 
 
 .breadcrumbs
+  float: left
   padding: 0 0 $base*3
   li
     color: $yellow
@@ -187,8 +199,283 @@
 
     &:hover
       color: $yellow
+ol.breadcrumbs
+  margin-bottom: 0px
+  margin-left: 10px
+
+/*============================================
+ ^Page Actions
+ * ==========================================*/
+
+.page-actions
+  float: right
+  margin: 0
+  padding: 0 0 0
+  position: relative
+  top: -$base
+
+  li
+    float: left
+    margin-left: $base*2
+  .search
+    top: 1px
+
+/*============================================
+ ^Devise
+ * ==========================================*/
+
+.devise-header
+  border: none
+  color: $darkyellow
+  padding: $base*4 0 $base
+  text-align: center
+
+  &:after,&:before
+    display: none
+
+.devise-body
+  float: none
+  margin: 0 auto
+  max-width: $base*60
+  width: 100%
+
+  .control-group
+    padding-left: 0
+  .checklist
+    margin-top: $base*2
+    position: relative
+
+.devise-sub-heading
+  color: $grey100
+  padding: 0 0 $base*3 
+  text-align: center
+
+/*============================================
+ ^Survey Summary
+ * ==========================================*/
+
+.survey-summary
+  h2 a
+    border-bottom: solid 1px
+    &:hover
+      border-bottom: none
+      color: $grey100
+  .survey-meta
+    margin: 0 0 $base*2 0
+  .pages
+    margin: 0
+    padding-bottom: 1px
+    overflow: hidden
+    li
+      float: left
+      margin: 0
+    a
+      background: $grey15
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.1)
+      border: none
+      display: block
+      height: $base
+      overflow: hidden
+      margin-right: $base/2
+      position: relative
+      text-indent: 100%
+      white-space: no-wrap
+      &.status-complete
+        background: $blue
+      &.status-errors
+        background: $red
+      &.status-in-progress
+        background: $yellow
+      &:hover
+        background: $grey60
+        border: none
+      &:active
+        background: $grey80
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.35)
+        top: 1px
+
+@for $i from 1 through 30
+  .pages#{$i}
+    li
+      width: 100%/$i
 
 
+/*============================================
+ ^Survey Navigation
+ * ==========================================*/
+
+.survey-nav
+  @extend .cf
+  left: 1px
+  float: left
+  padding: 0 $base*5 $base*4
+  position: relative
+  width: 100%
+  .btn-section
+    float: left        
+    padding: 0 0 $base*3 0 
+    position: relative
+    text-shadow: 0 1px 0 #fff
+
+    .btn
+      border-radius: 0
+      border-right: none
+      float: left
+      font-size: 1px
+      margin: 0
+      padding-left: 0
+      padding-right: 0      
+      text-indent: -9999px
+  
+  .btn-section-last
+    .btn-section-label
+      border-right: solid 1px $grey30 
+      box-shadow: inset 1px 0 #fff, inset -1px 0 #fff
+      &:after
+        @include gradient(rgba(0,0,0,0), (rgba(255,255,255,0), $bodybg))
+        content: ""
+        display: block
+        height: 100%
+        right: -1px
+        position: absolute
+        top: 0px
+        width: 2px
+  .btn-section-label
+    bottom: -$base
+    border-left: solid 1px $grey30
+    box-shadow: inset 1px 0 #fff
+    color: $grey50
+    font-size: $base*1.75
+    left: 0
+    right: 0
+    padding-top: $base
+    position: absolute
+    text-align: center
+    text-transform: uppercase
+
+    &.active
+      color: $blue
+
+    &:before
+      @include gradient(rgba(0,0,0,0), (rgba(255,255,255,0), $bodybg))
+      content: ""
+      display: block
+      height: 100%
+      left: -1px
+      position: absolute
+      top: 0px
+      width: 2px
+
+  .btn-prev
+    border-radius: $base/2 0 0 $base/2
+    border-right: none
+    position: absolute
+    left: 1px
+    top: 0
+    text-indent: -9999px
+    width: $base*5
 
 
+  .btn-next
+    border-radius: 0 $base/2 $base/2 0
+    right: 1px
+    position: absolute
+    top: 0
+    text-indent: -9999px
+    width: $base*5
+    z-index: 2
 
+  .btn
+    .icon
+      margin: -7px 0 0 -7px
+      top: 50%
+      left: 50%
+      position: absolute
+
+// section & btn widths
+
+@for $i from 1 through 10
+  $iminus: $i - 1
+  .btn-#{$i} .btn,
+  .section-#{$i} .btn-section
+    width: 100%/$i
+
+/*============================================
+ ^Assignments
+ * ==========================================*/
+
+.assignment-group
+  
+  margin: 0 0 $base*4
+  overflow: hidden
+  padding: 0 0 $base*2
+  border-bottom: solid 1px $grey20
+
+  .collapse
+    @extend .cf
+    background: #fff
+    border: solid 1px #fff
+    border-radius: 0 0 $base/2 $base/2
+    padding: 0 $base*4
+    width: 100%
+
+    &.in
+      border: solid 1px $grey20
+      margin-bottom: $base*2
+      padding-top: $base*2
+      padding-bottom: $base*2
+  .fake-tab
+    float: right
+  fieldset
+    border-bottom: none 
+    padding-left: $base
+    padding-right: $base
+  .control-group
+    margin-bottom: $base*2
+    padding-left: 0
+    width: 100%
+    label
+      width: 100%
+    select
+      float: left
+      margin-right: $base*2
+      margin-bottom: $base
+      width: 70%
+    .btn
+      float: left
+  table
+    margin-bottom: $base*4
+
+    .remove
+      border: none
+      color: $red
+      font-size: $base*3.5
+      font-weight: 600
+
+      &:hover
+        color: $black
+
+.sub-assignment-group
+  margin-left: $base*3
+
+.assignment-group-title
+  color: $yellow
+  float: left
+  margin: 0 0 $base*2.25
+  padding: 0
+  text-transform: uppercase
+  position: relative
+  top: 4px
+
+  .placeholder
+    font-weight: 500
+    text-transform: none
+  a
+    text-transform: none
+  .sub-assignment-group &
+    color: $grey100
+    text-transform: none
+.assignment-group-description
+  color: $grey70
+  float: left
+  width: 70%
