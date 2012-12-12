@@ -159,9 +159,14 @@
 /*============================================
  * ^Breadcrumbs
  * ========================================== */
+.survey-header {
+  float: left;
+  position: relative;
+  width: 100%; }
+
 .breadcrumbs {
   float: left;
-  padding: 0 0 24px; }
+  padding: 0 192px 24px 0; }
   .breadcrumbs li {
     color: #e59e01;
     font-size: 24px;
@@ -178,6 +183,16 @@
 ol.breadcrumbs {
   margin-bottom: 0px;
   margin-left: 10px; }
+  ol.breadcrumbs li.logo-360 {
+    background: url(../images/360-logo.png) no-repeat;
+    height: 60px;
+    float: right;
+    position: absolute;
+    top: -24px;
+    right: 24px;
+    width: 140px; }
+    ol.breadcrumbs li.logo-360:before, ol.breadcrumbs li.logo-360:after {
+      display: none; }
 
 /*============================================
  * ^Page Actions

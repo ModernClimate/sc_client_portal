@@ -1,85 +1,10 @@
- <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 oldie"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 oldie"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
- <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  
-  <title>SullivanCotter Client Portal</title>
-    
-  <meta name="description" content="">  
-  <meta name="author" content="Ackmann &amp Dickenson, Inc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-  <!-- All CSS Links -->
-  <link rel="stylesheet" href="assets/css/framework.css" type="text/css" />
-  <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
-   
-  <!-- Modernizer Call. Should come after the stylesheet declaration -->
-  <!-- Visit http://http://www.modernizr.com/download/ to generate a smaller, custom modernizr file-->
-  <script src="assets/js/modernizr.js"></script>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/sc_client_portal/surveys/includes/";
+?>
 
-  <!-- Typekit links -->
-  <script type="text/javascript" src="//use.typekit.net/kjn0zmh.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-  </head>
-  <body>
-    <header class="page-header">
-      <div class="container">
-        <ul class="nav utilities-nav">
-          <li>
-            <span>cmicek@gmail.com</span><span>Allina Health System</span>
-          </li>
-          <li><a href="">Your account</a></li>
-          <li><a href="">Help</a></li>
-          <li><a href="">Logout</a></li>
-        </ul>
-      </div>
-    </header>
-    <nav class="main-nav">
-      <div class="container">
-        <div class="logo accessibility"><a href="#">SullivanCotter Client Portal</a></div>
-        <ul class="nav main-nav-list">
-          <li class="first main-nav-active"><a href="#">Surveys</a></li>
-          <li><a href="#">Organization</a></li>
-          <li><a href="#">Users</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Container Start -->
-    <div class="container">
-      <ol class="nav with-separator breadcrumbs">
-        <li><a href="#">Surveys</a></li>
-        <li><a href="">Survey of Organization Characteristics</a></li>
-        <li>Participate</li>
-      </ol>
-    </div>
-    <!-- Container End -->
-    <div class="container">
-      <nav class="btn-group survey-nav section-3">
-          <a href="1.html" class="btn btn-grey btn-small btn-prev">Prev<span class="icon icon-prev"></span></a>
-        <div class="btn-section btn-1">
-          <div class="btn-section-label">Pre-Survey</div>
-          <a href="1.html" rel="tooltip" title="Assignments" class="btn btn-grey btn-small">Assignments <span class="icon icon-ok"></span></a>
-        </div>
-        <div class="btn-section btn-4">
-          <div class="btn-section-label active">Characteristics</div>
-          <a href="2.html" rel="tooltip" title="Org Structure" class="btn btn-grey btn-small active">Org Structure <span class="icon icon-empty"></span></a>
-          <a href="3.html" rel="tooltip" title="Teaching Programs" class="btn btn-grey btn-small">Teaching Programs <span class="icon icon-empty"></span></a>
-          <a href="4.html" rel="tooltip" title="Financial Data" class="btn btn-grey btn-small">Financial Data <span class="icon icon-empty"></span></a>
-          <a href="5.html" rel="tooltip" title="Operating Data" class="btn btn-grey btn-small">Operating Data <span class="icon icon-empty"></span></a>          
-        </div>
-        <div class="btn-section btn-section-last btn-1">
-          <div class="btn-section-label">Review</div>
-          <a href="6.html" class="btn btn-grey btn-small btn-page-status ">Review<span class="icon icon-empty"></span></a>         
-        </div>
-          <a href="3.html" class="btn btn-grey btn-small btn-next">Next<span class="icon icon-next"></span></a>
-      </div>
-    </nav>
-    <!-- Container Start -->
+<?php include ($path . '_header.php'); ?>
+<?php include ('_nav.php'); ?>
     <div class="container">
       <!-- Row Start -->
       <div class="row">
@@ -92,7 +17,7 @@
               <p class="bordered">Please answer the following questions regarding your organization’s characteristics. If you are a hospital system and providing data for multiple hospitals, a separate organization characteristics survey should be submitted for each hospital.  </p>
             </header>
             <fieldset>
-              <div class="control-group" id="1" data-required="true">
+              <div class="control-group numbered" id="1" data-required="true">
                 <p class="label">
                   <span class="num">1.</span>
                   Please select the classification that best describes the organization for which you are providing data (select one).
@@ -668,7 +593,7 @@
           </fieldset>
           <fieldset>
 
-              <div class="control-group" id="2" data-required="true">
+              <div class="control-group numbered" id="2" data-required="true">
                 <p class="label">
                 <span class="num">2.</span>
                 Please select the tax classification that best describes your organization.
@@ -694,7 +619,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="control-group" id="3" data-required="true">
+              <div class="control-group numbered" id="3" data-required="true">
                 <p class="label">
                 <span class="num">3.</span>
                 Please select your organization’s ownership.
@@ -720,7 +645,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="control-group" id="4" data-required="true">
+              <div class="control-group numbered" id="4" data-required="true">
                 <p class="label">
                 <span class="num">4.</span>
                 Please select your organization’s sponsorship.
@@ -788,57 +713,12 @@
                 </div>
               </fieldset>
             </section>
-            <!-- island End -->
-          </div>
-          <!-- Col9 end -->
-          <!-- Col3 begin -->
-          <div class="col3" data-spy="affix" data-offset-top="308">
-            <!-- Island begin --> 
-            <section class="island">
-              <div class="dropdown">
-                <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Save page&hellip;</a>
-                <ul class="nav stacked dropdown-menu">
-                    <li><a href="">and Go to next page</a></li>
-                    <li><a href="">and Mark as complete</a></li>
-                    <li class="sep"></li>
-                    <li><a class="disabled" href="">and Submit Survey</a></li>
-                  </ul>              
-              </div>
-              <div class="sep"></div>
-              <p data-required-display="">Required questions remaining</p>
-              <div class="sep"></div>
-              <h3>Last updated</h3>
-              <p>This page has never been updated.</p>
-            </div>
-              </div>
-          <!-- Island End -->
-        </section>
-        <!-- Col3 End -->
-      </div>
+          <!-- island End -->
+        </div>
+        <!-- Col9 end -->
+        <?php include ($path . '_sidebar.php'); ?>
       <!-- Row End -->
-     
-      
-       
       </div>
     </div>
     <!-- Container End -->
-    
-  <!-- Javascript Calls -->
-  <script src="assets/js/jquery.js"></script>
-  <script src="assets/js/bootstrap-dropdown.js"></script>
-  <script src="assets/js/bootstrap-tabs.js"></script>
-  <script src="assets/js/bootstrap-collapse.js"></script>
-  <script src="assets/js/bootstrap-tooltip.js"></script>
-  <script src="assets/js/jquery.input-dependencies.js"></script>
-  <script src="assets/js/jquery.validation.js"></script>
-  <script src="assets/js/bootstrap-affix.js"></script>
-
-  
-  <script>
-    $(document).ready(function(){
-      $('a[rel="tooltip"]').tooltip();
-
-    });
-  </script>
- </body>
-</html>
+<?php include ($path . '_footer.php'); ?>

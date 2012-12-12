@@ -11,10 +11,7 @@
     <!-- Col9 start -->
     <div class="col9">
       <!-- island start -->
-      <section class="island outset">
-        <h1>Verify Organization Characteristics.</h1>          
-                  
-      </section>
+      <?php include ($path . '_verify-characteristics.php'); ?>
       <!-- island End -->
     </div>
     <!-- Col9 end -->

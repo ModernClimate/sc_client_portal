@@ -3,11 +3,14 @@
 ?>
 <!-- Container Start -->
 <div class="container">
-  <ol class="nav with-separator breadcrumbs">
-    <li><a href="#">Surveys</a></li>
-    <li><a href="">American Medical Group Association Medical Group Compensation & Financial Survey</a></li>
-    <li>Participate</li>
-  </ol>
+  <div class="survey-header">
+    <ol class="nav with-separator breadcrumbs">
+      <li class="logo-360"></li>
+      <li><a href="#">Surveys</a></li>
+      <li><a href="">American Medical Group Association Medical Group Compensation & Financial Survey</a></li>
+      <li>Participate</li>
+    </ol>
+  </div>
 </div>
 <!-- Container End -->
 <div class="container">
@@ -26,8 +29,8 @@
       <a href="5.php" rel="tooltip" title="Starting Salaries" class="btn btn-grey btn-small <?= $pageName == 5 ? 'active' : '' ?>">Starting Salaries <span class="icon <?= $pageName > 5 ? 'icon-ok' : 'icon-empty' ?>"></span></a>
       <a href="6.php" rel="tooltip" title="Administrative" class="btn btn-grey btn-small <?= $pageName == 6 ? 'active' : '' ?>">Administrative <span class="icon <?= $pageName > 6 ? 'icon-ok' : 'icon-empty' ?>"></span></a>
     </div>
-    <div class="btn-section btn-1 <?= $pageName == 7 ? 'active' : '' ?>">
-      <div class="btn-section-label ">Profile</div>
+    <div class="btn-section btn-1 ">
+      <div class="btn-section-label <?= $pageName == 7 ? 'active' : '' ?>">Profile</div>
       <a href="7.php" rel="tooltip" title="Compensation Profile" class="btn btn-grey btn-small <?= $pageName == 7 ? 'active' : '' ?>">Compensation Profile <span class="icon <?= $pageName > 7 ? 'icon-ok' : 'icon-empty' ?>"></span></a>
     </div>
     <div class="btn-section btn-4">

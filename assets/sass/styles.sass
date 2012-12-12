@@ -180,10 +180,14 @@
  ^Breadcrumbs
  * ==========================================*/
 
+.survey-header
+  float: left
+  position: relative
+  width: 100%
 
 .breadcrumbs
   float: left
-  padding: 0 0 $base*3
+  padding: 0 $base*24 $base*3 0
   li
     color: $yellow
     font-size: $base*3
@@ -203,6 +207,19 @@ ol.breadcrumbs
   margin-bottom: 0px
   margin-left: 10px
 
+
+  li.logo-360
+    background: url(../images/360-logo.png) no-repeat
+    height: 60px
+    float: right
+    position: absolute
+    top: -$base*3
+    right: $base*3
+    width: 140px
+
+    &:before,
+    &:after
+      display: none
 /*============================================
  ^Page Actions
  * ==========================================*/
