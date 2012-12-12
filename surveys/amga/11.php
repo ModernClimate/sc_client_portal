@@ -1,9 +1,6 @@
-<?php 
-   $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/sc_client_portal/surveys/includes/";
-?>
+ 
 
-<?php include ($path . '_header.php'); ?>
+<?php include ( '../includes/_header.php'); ?>
 <?php include ('_nav.php'); ?>
     <div class="container">
       <!-- Row Start -->
@@ -44,4 +41,4 @@
 
     </div>
     <!-- Container End -->
-<?php include ($path . '_footer.php'); ?>
+<?php include ( '../includes/_footer.php'); ?>
