@@ -3,15 +3,7 @@
   <div class="col3" data-affix="true">
     <!-- Island begin --> 
     <section class="island" >
-      <div class="dropdown">
-        <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Save page&hellip;</a>
-        <ul class="nav stacked dropdown-menu">
-            <li><a href="<?= ($pageName + 1) ?>.php">and Go to next page</a></li>
-            <li><a href="">and Mark as complete</a></li>
-            <li class="sep"></li>
-            <li><a class="disabled" href="">and Submit Survey</a></li>
-          </ul>              
-      </div>
+      <a href="" class="btn btn-yellow">Save Data</a>
       <div class="sep"></div>
       <h3 data-remaining="">Required questions remaining.</h3>
       <a id="jump" href="" class="btn btn-grey">Jump to next question</a>

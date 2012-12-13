@@ -1,6 +1,4 @@
-<?php
-    $pageName = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
-?>
+<?php $pageName = str_replace('.php', '', basename($_SERVER['PHP_SELF'])); ?>
 <!-- Container Start -->
 <div class="container">
   <div class="survey-header">

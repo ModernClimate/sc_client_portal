@@ -72,7 +72,7 @@
                     <li>
                       <label>
                         Yes
-                        <input type="radio" disabled="" name="5-1-1" data-dependency-trigger="true" data-dependency-target="#5-1-1-1" />  
+                        <input type="radio" disabled="" name="5-1-1" data-dependency-trigger="true" data-dependency-target="#5-1-1-1,#5-1-1-1-1,#5-1-1-1-2,#5-1-1-1-3" />  
                       </label>
                     </li>
                     <li>
@@ -94,19 +94,23 @@
                       <span class="num">5.1.1.1</span>
                       If yes, please provide the medical school’s information.
                     </p>
-
-                    <label for="">
-                      Name:
+                    <div class="control-group control-group-disabled" id="5-1-1-1-1">
+                      <label>Name:     </label>
+                       <input type="text" disabled=""/>  
+                    </div>
+                     <div class="control-group control-group-disabled" id="5-1-1-1-2">
+                      <label>
+                        City:</label>
                       <input type="text" disabled=""/>  
-                    </label>
-                    <label for="">
-                      City:
-                      <input type="text" disabled=""/>  
-                    </label>
-                    <label for="">
-                      State:
-                      <select disabled=""></select>
-                    </label>
+                    </div>
+                    <div class="control-group control-group-disabled" id="5-1-1-1-3">
+                      <label>
+                        State:
+                      </label>
+                      <select disabled="">
+                        <option value="">Alabama</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -119,7 +123,7 @@
                   <li>
                     <label>
                       Yes
-                      <input type="radio" disabled="" name="5-2" data-dependency-trigger="true" data-dependency-target="#5-2-1" />  
+                      <input type="radio" disabled="" name="5-2" data-dependency-trigger="true" data-dependency-target="#5-2-1,#5-2-1-1,#5-2-1-2,#5-2-1-3,#5-2-1-4,#5-2-1-5,#5-2-1-6,#5-2-1-7,#5-2-1-8,#5-2-1-9" />  
                     </label>
                   </li>
                   <li>
@@ -140,44 +144,69 @@
                     <span class="num">5.2.1</span>
                     If yes, please provide the information of the medical school(s) with which your group is affiliated.
                   </p>
-                  <label for="">
-                    Name:
+                  <div class="control-group control-group-disabled" id="5-2-1-1">
+                    <label>
+                      Name:
+                    </label>
                     <input type="text" disabled=""/>  
-                  </label>
-                  <label for="">
-                    City:
+                  </div>
+                  <div class="control-group control-group-disabled" id="5-2-1-2">
+                    <label>
+                      City:
+                    </label>
                     <input type="text" disabled=""/>  
-                  </label>
-                  <label for="">
-                    State:
-                    <select disabled=""></select>
-                  </label>
+                  </div>
+                  <div class="control-group control-group-disabled" id="5-2-1-3">
+                    <label>
+                      State:                    
+                    </label>
+                    <select disabled="">
+                      <option value=" ">Alabama</option>
+                    </select>                    
+                  </div>
+
                   <div class="sep"></div>
-                  <label for="">
-                    Name:
+                  <div class="control-group control-group-disabled" id="5-2-1-4">
+                    <label>
+                      Name:
+                    </label>
                     <input type="text" disabled=""/>  
-                  </label>
-                  <label for="">
-                    City:
+                  </div>
+                  <div class="control-group control-group-disabled" id="5-2-1-5">
+                    <label>
+                      City:
+                    </label>
                     <input type="text" disabled=""/>  
-                  </label>
-                  <label for="">
-                    State:
-                    <select disabled=""></select>
-                  </label>
+                  </div>
+                  <div class="control-group control-group-disabled" id="5-2-1-6">
+                    <label>
+                      State:                    
+                    </label>
+                    <select disabled="">
+                      <option value=" ">Alabama</option>
+                    </select>                    
+                  </div>
                   <div class="sep"></div>
-                  <label for="">
-                    Name:
+                  <div class="control-group control-group-disabled" id="5-2-1-7">
+                    <label>
+                      Name:
+                    </label>
                     <input type="text" disabled=""/>  
-                  </label>
-                  <label for="">
-                    City:
+                  </div>
+                  <div class="control-group control-group-disabled" id="5-2-1-8">
+                    <label>
+                      City:
+                    </label>
                     <input type="text" disabled=""/>  
-                  </label>
-                  <label for="">
-                    State:
-                    <select disabled=""></select>
-                  </label>
+                  </div>
+                  <div class="control-group control-group-disabled" id="5-2-1-9">
+                    <label>
+                      State:                    
+                    </label>
+                    <select disabled="">
+                      <option value=" ">Alabama</option>
+                    </select>                    
+                  </div>
                 </div>
               </div>
               <div class="control-group control-group-disabled" id="5-3">
@@ -190,33 +219,33 @@
                   <li>
                     <label>
                       Yes
-                      <input type="radio" disabled="" name="" />  
+                      <input type="radio" disabled="" name="5-3" />  
                     </label>
                   </li>
                   <li>
                     <label>
                       No
-                      <input type="radio" disabled="" name="" />  
+                      <input type="radio" disabled="" name="5-3" />  
                     </label>
                   </li>
                   <li>
                     <label>
                       Unknown
-                      <input type="radio" disabled="" name="" />  
+                      <input type="radio" disabled="" name="5-3" />  
                     </label>
                   </li>
                 </ul>
               </div>
               <div class="control-group control-group-disabled" id="5-4">
                 <span class="num">5.4</span>
-                <label for="">
+                <label>
                   How many approved residency programs do you have in your organization?
                 </label>
                 <input type="text" disabled="" data-type="number" data-validate="int" />  
               </div>
               <div class="control-group control-group-disabled" id="5-5">
                 <span class="num">5.5</span>
-                <label for="">How many residents are affiliated with your organization?</label>
+                <label>How many residents are affiliated with your organization?</label>
                 <input type="text" disabled="" data-type="number" data-validate="int" />  
               </div>
 
@@ -227,7 +256,7 @@
                 <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Save page&hellip;</a>
                 <ul class="nav stacked dropdown-menu">
                   <li>
-                    <a href="">and Go to next page</a>
+                    <a href="<?= ($pageName + 1) ?>">and Go to next page</a>
                   </li>
                   <li>
                     <a href="">and Mark as complete</a>

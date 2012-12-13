@@ -13,9 +13,6 @@
           </ul>              
       </div>
       <div class="sep"></div>
-      <h3 data-remaining="">Required questions remaining.</h3>
-      <a id="jump" href="" class="btn btn-grey">Jump to next question</a>
-      <div class="sep"></div>
       <h3>Last updated</h3>
       <p>This page has never been updated.</p>
        <div class="sep"></div>

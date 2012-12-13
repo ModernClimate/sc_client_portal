@@ -49,37 +49,52 @@ var Validation = (function() {
     var type = $this.attr('data-validate');
     var isValid = true;
     var message = '';
+    var val = $this.val();
     
     $parent.removeClass('control-group-error').find('.error-message').remove();
 
-    if($this.val() === ''){
+    if(val === ''){
       return false;
     }
+
+
     switch (type){
       case 'float':
-        isValid = isNumeric($this.val());
-        message = 'Entry must be a number';
+        isValid = isNumeric(val);
+        message = isValid === false ? 'Entry must be a number' : '';
+        
       break;
       case 'int' :
-        isValid = validateInt($this.val());
-        message = 'Entry must be a whole number';
+        isValid = validateInt(val);
+        message = isValid === false ? 'Entry must be a whole number' : '';
       break;
       case 'string' :
-        if(validateInt($this.val())){
+        if(validateInt(val)){
           isValid = false;
         }
-        message = 'Entry cannot be a number';
+        message = isValid === false ? 'Entry cannot be a number' : '';
       break;
-
     }
+
+    if(isValid && !isWithinRange(val.replace(/,/g, ""), $this.attr('data-validate-min'), $this.attr('data-validate-max'))){
+      isValid = false;
+      message = 'Entry must be between ' + addCommas($this.attr('data-validate-min')) + ' and ' + addCommas($this.attr('data-validate-max'));
+    }        
+
+
 
     if(!isValid){
       $parent.addClass('control-group-error');
       if($parent.hasClass('control-group-horizontal')){
         $this.after('<span class="error-message">'+message+'</span>');
-      }else{
-        $this.before('<span class="error-message">'+message+'</span>');
+        return true;
       }
+      if($parent.is('td')){
+        $this.after('<span class="error-message">'+message+'</span>');
+        return true;
+      }
+
+      $this.before('<span class="error-message">'+message+'</span>');
     }    
   }
 
@@ -93,38 +108,134 @@ var Validation = (function() {
     return true;
   }
 
-  function requiredCounter(){
-    console.log('test');
-    var counter = $('[data-required]').length;
-    $('[data-required]').each(function(){
-      var $this = $(this);
-      if($this.find('input:checked').length > 0){
-        counter --;
-        return true;
-      }
-
-      if($this.val() !== ''){
-        counter --;
-        return true;
-      }
-    });
-    $('[data-required-display]').text(counter);
-    
-    if(counter === 1){
-      $('[data-required-display]').html('<strong>' +counter + '</strong> required question remaining.');
-    }else{
-      $('[data-required-display]').html('<strong>' +counter + '</strong> required questions remaining.');
+  function isWithinRange (n, min, max){
+    if(!min && !max){
+      return true;
     }
+    if(parseFloat(n) < parseFloat(min) || parseFloat(n) > parseFloat(max)){
+      return false;
+    }
+    return true;
+
   }
 
+  function requiredCounter(){
+    var emptyResponses = true;
+    // console.log('test for empties');
+    $('.control-group').not('.control-group-disabled').each(function(){
+      var $this = $(this);
+      var hasCheckRadios = $this.children('.checklist').length > 0 ? true : false;
+      var hasTextInput= $this.children('input:text,textarea').length > 0 ? true : false;
+      var hasSelect= $this.children('select').length > 0 ? true : false;
+      if(hasCheckRadios){
+        if($this.children('.checklist').find('input:checked').length < 1){
+          // console.log('check: ' + $this.find('.num:first').text());
+          // console.log($this.children('.checklist').find('input:checked'));
+          emptyResponses = true;
+          return false;
+        }
+      }
+
+      if(hasTextInput){
+        // console.log('text');
+        if($this.children('input,textarea').val() === ''){
+          // console.log('text: ' + $this.find('.num:first').text());
+          // console.log($this.children('input[type=text],select,textarea'));
+          emptyResponses = true;
+          return false;
+
+        }
+      }
+       emptyResponses = false;
+    });
+    if(emptyResponses){
+      $('[data-remaining]').html('Required questions remaining.');
+      $('#jump').removeClass('btn-disabled');
+    }else{
+      $('[data-remaining]').html('No questions remaining.');
+      $('#jump').addClass('btn-disabled');
+
+
+    }
+    
+  }
+
+  function jumpToOpenControlGroup(e){
+    e.preventDefault();
+
+    $('.control-group:not(.control-group-disabled)').each(function(){
+      var $this = $(this);
+      var hasCheckRadios = $this.children('.checklist').length > 0 ? true : false;
+      var hasTextInput= $this.children('input:text,textarea').length > 0 ? true : false;
+      var hasSelect= $this.children('select').length > 0 ? true : false;
+
+      if($this.children('.checklist,input,select,textarea').length < 1){
+        return true;
+      }
+      if(hasCheckRadios){
+        if($this.children('.checklist').find('input:checked').length > 0){
+          return true;
+        }
+      }
+      if(hasTextInput){
+        // console.log('has input');
+        if($this.children('input,textarea').val() !== ''){
+          return true;
+        }
+      }
+      if(hasSelect){
+        if($this.children('select').val() !== ''){
+          return true;
+        }
+      }
+      var scrollPos = $this.offset().top;
+      if($('html').hasClass('ie8')){
+        scrollPos = scrollPos + $('html').scrollTop();
+
+      }
+      
+      $('html, body').animate({scrollTop:scrollPos}, 'fast', function(){
+        $this.find('input:first,select:first,textarea:first').focus();
+      });
+      
+      return false;
+
+    });
+  }
+
+  function sumInputs(){
+    var $this = $(this);
+    var total = 0;
+    var id = $this.attr('data-sum-inputs');
+    var $totalTarget = $($this.attr('data-sum-target'));
+    $('input[data-sum-inputs='+id+']').each(function(){
+      total += $.isNumeric($(this).val()) === true ? parseFloat($(this).val()) : 0
+    });
+    $totalTarget.parent().find('.error-message').remove();
+    if(!$totalTarget.attr('data-sum-max')){
+       $totalTarget.text(total);
+       return true;
+    }
+    if(total !== parseFloat($totalTarget.attr('data-sum-max'))){
+        message = 'Column Totals must equal '+$this.attr('data-validate-max');
+        $totalTarget.after('<span class="error-message">'+message+'</span>');
+    }
+    $totalTarget.text(total);
+
+
+  }
   //
   // Sets up the event handlers
   //
   function initUIBindings() {
     $('[data-type="number"]').on('keyup change', niceNumbers); 
     $('[data-validate]').on('keyup change', validateInput);
-    $('[data-required] input').on('change', requiredCounter);
+    $('input,select,textarea').on('change', requiredCounter);
     $('input[data-required]').on('keyup', requiredCounter);
+    $('input[data-sum-inputs]').on('keyup', sumInputs);
+
+    $('#jump').on('click', jumpToOpenControlGroup);
+
   }
 
   //

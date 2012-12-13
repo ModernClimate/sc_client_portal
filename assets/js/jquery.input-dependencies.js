@@ -13,15 +13,24 @@ var Dependencies = (function() {
     if(type !== 'checkbox'){
       disableElements($(target.join(',')));
     }
+    
 
     if($this.attr('data-dependency-trigger') === 'true' && $this.prop('checked') === true){
       enableElements($($this.attr('data-dependency-target')));
-    }else{
-      disableElements($($this.attr('data-dependency-target')));
+      return true;
     }
+
+    if(type !== 'checkbox' && $this.val() !== ''){
+      console.log('oi');
+      enableElements($($this.attr('data-dependency-target')));
+      return true;
+    }
+    
+    disableElements($($this.attr('data-dependency-target')));
   }
 
   function enableElements($target){
+    console.log($target);
     $target.removeClass('control-group-disabled');
     $target.find('input,select,textarea').prop('disabled', false);
   }
@@ -35,7 +44,7 @@ var Dependencies = (function() {
   // Sets up the event handlers
   //
   function initUIBindings() {
-    $('[data-dependency-trigger]').on('change', function(){  
+    $('[data-dependency-trigger]').on('change keyup', function(){  
       var $this = $(this);
       toggle($this);
     });

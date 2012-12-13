@@ -47,25 +47,25 @@
                   </li>
                   <li>
                     <label>
-                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-2,#1-2-1,#1-2-2,#1-2-3,#1-2-4" />
+                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-2,#1-2-0,#1-2-1,#1-2-2,#1-2-3,#1-2-4" />
                       <strong>Freestanding, stand-alone hospital</strong> (single independent hospital where the chief executive officer reports to a board of directors of the hospital and the hospital is not owned, leased or operated by a health system)
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-2,#1-2-1,#1-2-2,#1-2-3,#1-2-4,#1-3" />
+                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-2,#1-2-0,#1-2-1,#1-2-2,#1-2-3,#1-2-4,#1-3, #1-3-0" />
                       <strong>Freestanding, system-affiliated hospital</strong> (single independent hospital where the chief executive officer reports to a board of directors of the hospital; although the hospital is affiliated with one or more health systems)
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-2,#1-2-1,#1-2-2,#1-2-3,#1-2-4, #1-3" />
+                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-2,#1-2-0,#1-2-1,#1-2-2,#1-2-3,#1-2-4, #1-3, #1-3-0" />
                       <strong>System-owned hospital</strong> (single hospital entity that is owned, leased or operated by a health system where a board of directors exists at the system or local level and the hospital chief executive officer reports to the health system chief executive officer or chief operating officer)
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-4,#1-4-1,#1-4-2,#1-4-3,#1-4-4" />
+                      <input type="radio" name="1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-4, #1-4-0,#1-4-1,#1-4-2,#1-4-3,#1-4-4" />
                       <strong>Medical group – Single-specialty</strong> (a group of two or more physicians and non-physician practitioners legally organized in a partnership, professional corporation, foundation, not-for-profit corporation, faculty practice plan, or similar association that provides patients with a specific type of care (i.e., primary care or subspecialty practice).
                     </label>
                   </li>
@@ -78,8 +78,8 @@
                   <li>
                     <label>
                       Other
-                      <input class="vertically-centered" name="1-1" type="radio" disabled="" data-dependency-trigger="true" />
-                      <input class="mid" type="text" disabled="" id="other" name="other" placeholder="Please describe..." />
+                      <input class="vertically-centered" name="1-1" type="radio" data-dependency-trigger="true" />
+                      <input class="mid" type="text" id="other" name="other" placeholder="Please describe..." />
                     </label>
                   </li>
                 </ul>
@@ -99,7 +99,7 @@
                   <ul class="checklist">
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="1-1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-1-1-1" />
+                        <input type="radio" disabled="" name="1-1-1" id="" data-dependency-trigger="true" data-dependency-target="#1-1-1-1,#1-1-1-1-1,#1-1-1-1-2,#1-1-1-1-3" />
                         Yes
                       </label>
                     </li>
@@ -121,12 +121,20 @@
                       <span class="num">1.1.1.1</span>
                       If yes, please provide the parent organization’s information.
                     </p>
+                  <div class="control-group control-group-disabled" id="1-1-1-1-1">
                     <label for="">System Name:</label>
                     <input type="text" disabled="" placeholder="" />
+                  </div>
+                  <div class="control-group control-group-disabled" id="1-1-1-1-2">
                     <label for="">City:</label>
                     <input type="text" disabled="" placeholder="" />
+                  </div>
+                  <div class="control-group control-group-disabled" id="1-1-1-1-3">
                     <label for="">State:</label>
-                    <select disabled="" name="" id=""></select>
+                    <select disabled="" name="" id="">
+                      <option value="">Alabama</option>
+                    </select>
+                  </div>
                   </div>
                 </div>
 
@@ -173,13 +181,13 @@
                   <ul class="checklist">
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-1-7" id="" />
                         Yes
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-1-7" id="" />
                         No
                       </label>
                     </li>
@@ -193,19 +201,19 @@
                   <ul class="checklist">
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-1-8" id="" />
                         Yes
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-1-8" id="" />
                         No
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-1-8" id="" />
                         Unknown
                       </label>
                     </li>
@@ -214,8 +222,8 @@
               </div>
             </fieldset>
             <fieldset>
-              <div class="control-group" id="">
-                <div class="control-group  control-group-disabled" id="1-2">
+              <div class="control-group control-group-disabled" id="1-2">
+                <div class="control-group control-group-disabled" id="1-2-0">
                   <p class="label group-title">
                     <span class="num">1.2</span>
                     If a freestanding, stand-alone or system affiliated hospital or system-owned hospital,
@@ -358,13 +366,13 @@
                   <ul class="checklist">
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-2-2" id="" />
                         Yes
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-2-2" id="" />
                         No
                       </label>
                     </li>
@@ -403,19 +411,19 @@
                     <ul class="checklist">
                       <li>
                         <label>
-                          <input type="radio" disabled="" name="" id="" />
+                          <input type="radio" disabled="" name="1-2-4-1" id="" />
                           Level I
                         </label>
                       </li>
                       <li>
                         <label>
-                          <input type="radio" disabled="" name="" id="" />
+                          <input type="radio" disabled="" name="1-2-4-1" id="" />
                           Level II
                         </label>
                       </li>
                       <li>
                         <label>
-                          <input type="radio" disabled="" name="" id="" />
+                          <input type="radio" disabled="" name="1-2-4-1" id="" />
                           Level III
                         </label>
                       </li>
@@ -425,24 +433,25 @@
               </div>
             </fieldset>
             <fieldset>
-              <div class="control-group" id="">
-                <div class="control-group control-group-disabled" id="1-3">
+              <div class="control-group control-group-disabled" id="1-3">
+                <div class="control-group control-group-disabled" id="1-3-0">
                   <p class="label group-title">
                   <span class="num">1.3</span>
                   If an affiliated or system-owned hospital, please provide your affiliate or parent organization information.
                   </p>
+
                   <label for="">System Name:</label>
                   <input type="text" disabled="" placeholder="" />
                   <label for="">City:</label>
                   <input type="text" disabled="" placeholder="" />
                   <label for="">State:</label>
-                  <select disabled="" name="" id=""></select>
+                  <select disabled="" name="" id=""><option value="">Alabama</option></select>
                 </div>
               </div>
             </fieldset>
             <fieldset>
-              <div class="control-group" id="">
-                <div class="control-group control-group-disabled" id="1-4">
+              <div class="control-group control-group-disabled" id="1-4">
+                <div class="control-group control-group-disabled" id="1-4-0">
                 <p class="label group-title">
                   <span class="num">1.4</span>
                   If a single- or -specialty medical group,
@@ -500,44 +509,44 @@
                   <ul class="checklist">
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-4-2" id="" />
                         Physicians
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-4-2" id="" />
                         Hospital
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-4-2" id="" />
                         University or medical school
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-4-2" id="" />
                         Health system
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-4-2" id="" />
                         Physician practice management company
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" disabled="" name="" id="" />
+                        <input type="radio" disabled="" name="1-4-2" id="" />
                         Insurance company or managed care organization
                       </label>
                     </li>
                     <li>
                       <label>
                         Other
-                        <input class="vertically-centered" disabled="" name="" type="radio" disabled="" />
+                        <input class="vertically-centered" disabled="" name="1-4-2" type="radio" disabled="" />
                         <input class="mid" type="text" disabled="" id="other" name="other" placeholder="Please describe..." />
                       </label>
                     </li>
@@ -598,19 +607,19 @@
                 <ul class="checklist">
                   <li>
                     <label>
-                      <input type="radio"  name="" id="" />
+                      <input type="radio"  name="2" id="" />
                       For-profit
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio"  name="" id="" />
+                      <input type="radio"  name="2" id="" />
                       Not-for-profit
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio"  name="" id="" />
+                      <input type="radio"  name="2" id="" />
                       Tax district
                     </label>
                   </li>
@@ -624,19 +633,19 @@
                 <ul class="checklist">
                   <li>
                     <label>
-                      <input type="radio"  name="" id="" />
+                      <input type="radio"  name="3" id="" />
                       Non-government
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio"  name="" id="" />
+                      <input type="radio"  name="3" id="" />
                       Government, non-federal (state, county, city, hospital district, hospital authority or public university)
                     </label>
                   </li>
                   <li>
                     <label>
-                      <input type="radio"  name="" id="" />
+                      <input type="radio"  name="3" id="" />
                       Government, federal
                     </label>
                   </li>
@@ -676,32 +685,32 @@
                   <ul class="checklist">
                     <li>
                       <label>
-                        <input type="radio" name="" id="" />
+                        <input type="radio" name="4-1" id="" />
                         Baptist
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" name="" id="" />
+                        <input type="radio" name="4-1" id="" />
                         Catholic
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" name="" id="" />
+                        <input type="radio" name="4-1" id="" />
                         Lutheran
                       </label>
                     </li>
                     <li>
                       <label>
-                        <input type="radio" name="" id="" />
+                        <input type="radio" name="4-1" id="" />
                         Presbyterian
                       </label>
                     </li>
                     <li>
                       <label>                      
                         Other
-                        <input class="vertically-centered" name="" type="radio" />
+                        <input class="vertically-centered" name="4-1" type="radio" />
                         <input class="mid" type="text" id="other" name="other" placeholder="Please describe..." />
                       </label>
                     </li>
@@ -709,6 +718,24 @@
                 </div>
                 </div>
               </fieldset>
+
+            <footer class="submit-group">
+              <div class="dropdown fr">
+                <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Save page&hellip;</a>
+                <ul class="nav stacked dropdown-menu">
+                  <li>
+                    <a href="<?= ($pageName + 1) ?>">and Go to next page</a>
+                  </li>
+                  <li>
+                    <a href="">and Mark as complete</a>
+                  </li>
+                  <li class="sep"></li>
+                  <li>
+                    <a class="disabled" href="">and Submit Survey</a>
+                  </li>
+                </ul>
+              </div>
+            </footer>
             </section>
           <!-- island End -->
         </div>

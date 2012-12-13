@@ -35,7 +35,8 @@ var Affix = (function() {
 
   }
 
-  function testPosition(winY){
+  function testPosition(){
+    var winY = $('body').scrollTop() === 0 ? $('html').scrollTop() : $('body').scrollTop();
     $('[data-affix]').each(function(){
       var $this = $(this);
       if(winY > $this.attr('data-original-y')){
@@ -75,7 +76,7 @@ var Affix = (function() {
       if (didScroll === false) {
         return false;
       }
-      testPosition($window.scrollTop());
+      testPosition();
       didScroll = false;
     }, 33);
     setInterval(function(){
@@ -83,7 +84,7 @@ var Affix = (function() {
         return false;
       }
       $('[data-affix]').each(recalculateOriginals);
-      testPosition($window.scrollTop());
+      testPosition();
       didResize = false;
     }, 33);
   }
@@ -95,7 +96,6 @@ var Affix = (function() {
   return {
 
     init: function() {
-      console.log('oi');
       if($('[data-affix]').length < 1){
         return false;
       }

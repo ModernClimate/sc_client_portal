@@ -17,7 +17,7 @@
     <div class="dropdown fr">
     <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Save page&hellip;</a>
       <ul class="nav stacked dropdown-menu">
-        <li><a href="">and Go to next page</a></li>
+        <li><a href="<?= ($pageName + 1) ?>.php">and Go to next page</a></li>
         <li><a href="">and Mark as complete</a></li>
         <li class="sep"></li>
         <li><a class="disabled" href="">and Submit Survey</a></li>

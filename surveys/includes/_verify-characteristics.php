@@ -72,14 +72,12 @@
 
  
   <footer class="submit-group">
-    <div class="dropdown fr">
-    <a href="" class="btn btn-blue btn-dropdown dropdown-toggle" data-toggle="dropdown">Save page&hellip;</a>
-    <ul class="nav stacked dropdown-menu">
-        <li><a href="">and Go to next page</a></li>
-        <li><a href="">and Mark as complete</a></li>
-        <li class="sep"></li>
-        <li><a class="disabled" href="">and Submit Survey</a></li>
-      </ul>              
-  </div>
+    <ul class="nav fr">
+      <li><a href="" class="btn btn-blue">Mark As correct</a></li>
+      <li><a href="#contact-modal" class="btn btn-yellow" data-toggle="modal">Mark As Incorrect</a></li>
+      <li><a href="" class="btn btn-grey">Mark As Unknown</a></li>
+      
+    </ul>
+    
   </footer>
 </section>

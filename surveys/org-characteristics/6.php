@@ -43,7 +43,23 @@
           <!-- island End -->
         </div>
         <!-- Col9 end -->
-        <?php include ( '../includes/_sidebar.php'); ?>
+       
+  <!-- Col3 begin -->
+  <div class="col3" data-affix="true">
+    <!-- Island begin --> 
+    <section class="island" >
+      
+      <h3>Last updated</h3>
+      <p>This page has never been updated.</p>
+       <div class="sep"></div>
+      <h3>Assigned Users</h3>
+      <p>No users have been assigned to this page. <a href="#">Get some help.</a></p>
+    </div>
+    </div>    
+    <!-- Island End -->
+  </section>
+  <!-- Col3 End -->
+</div>
       <!-- Row End -->
       </div>
     </div>
